@@ -1,0 +1,5 @@
+applications:
+- buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  name: proindiemusic-landing
+  memory: 64M
+  stack: cflinuxfs2

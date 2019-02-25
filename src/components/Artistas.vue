@@ -1,0 +1,280 @@
+<template lang="html">
+  <section id="artistas">
+    <div class="infoContainer">
+      <div class="row">
+        <div class="col-9">
+          <h1 class="artistName">SOFÍA Y MARCELO</h1>
+        </div>
+        <div class="col-3">
+          <div class="circle text-center">
+            <span class="artistInfo">NIVEL</span><br>
+            <span class="artistInfo">6</span>
+          </div>
+          <span class="artistInfo text-center">PLAN PREMIUM</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <img class="rounded-circle img-fluid" src="../assets/images/plo.jpg" alt="">
+        </div>
+        <div class="col-8">
+          <h4 class="artistInfo text-left"> MX Jalapa, Veracruz</h4>
+          <h4 class="artistInfo text-left"> World Music / Acoustic / Ethnojazz / Bossa Nova / Folk Pop </h4>
+        </div>
+      </div>
+    </div>
+    <div class="moreInfocontainer">
+      <div class="row text-center">
+        <span class="description">Sofía & Marcelo are an innovative Mexican duo who combine different musical elements to achieve an experience in the spectator. </span>
+      </div>
+      <div class="row imgContainerExtra">
+        <img class="extraImg" src="../assets/images/PIM_international_purple.png" alt="">
+        <div class="row">
+          <h5 >Artista con <br> PROYECCIÓN <br> INTERNACIONAL</h5>
+        </div>
+      </div>
+      <div class="row text-center attributesContainer">
+        <div class="imgContainer">
+          <img class="attributesImg" src="../assets/images/PIM_opportunity_purple.png" alt=""><br>
+          <span>Oportunidades</span>
+        </div>
+        <div class="imgContainer">
+          <img class="attributesImg" src="../assets/images/PIM_coins_purple.png" alt=""><br>
+          <span>Pago Pendiente</span>
+        </div>
+        <div class="imgContainer">
+          <img class="attributesImg" src="../assets/images/PIM_recommend_purple.png" alt=""><br>
+          <span>Recomendaciones</span>
+        </div>
+      </div>
+    </div>
+    <div class="cotizacionWrapper">
+      <div class="col-3 mediaPlayer">
+        <img class="" src="../assets/images/media2.png" alt=""><br>
+      </div>
+      <div class="col-9 cotizacionContainer">
+        <h3 class="row">Cotización y trayectoria artística</h3>
+        <div class="row text-center attributesContainer">
+          <div class="imgContainer">
+            <img class="cotizacionImg" src="../assets/images/PIM_spotlights_orange.png" alt=""><br>
+            <span class="cotizacionNum">65 </span> <br>
+            <span class="cotizacionText"> CIUDADES</span>
+          </div>
+          <div class="imgContainer">
+            <img class="cotizacionImg" src="../assets/images/PIM_level_orange.png" alt=""><br>
+            <span class="cotizacionNum">65 </span> <br>
+            <span class="cotizacionText"> CIUDADES</span>
+          </div>
+          <div class="imgContainer">
+            <img class="cotizacionImg" src="../assets/images/PIM_money_orange.png" alt=""><br>
+            <span class="cotizacionNum">65 </span> <br>
+            <span class="cotizacionText"> CIUDADES</span>          </div>
+        </div>
+      </div>
+    </div>
+    <div class="statsContainer">
+      <div class="row socialContainer">
+        <div class="col-6 socialMedia">
+          <div class="row">
+            <div class="socialIcons">
+              <i class="fab fa-facebook-f"></i> <span> +35 likes</span> <br>
+              <i class="fab fa-twitter"></i> <span> 60% + comentarios</span><br>
+              <i class="fab fa-instagram"></i><span> 80% + seguidores</span> <br>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 planPremium">
+          <span class="cotizacionText">PLAN PREMIUM</span> <br>
+          <span class="cotizacionNum">57%</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 57%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row nextStepsContainer">
+      <div class="col-7">
+        <span class="cotizacionText">Hola, Sofia y Marcelo!</span><br>
+        <span class="cotizacionText">Veo que hubo buena reacción en el evento de CDMX...</span><br>
+        <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
+      </div>
+      <div class="col-5 text-center">
+        <div class="nextStepOption">
+          Programar concierto
+        </div>
+        <div class="nextStepOption">
+          Publicación de agradecimiento
+        </div>
+        <div class="nextStepOption">
+          Crear campaña publicitaria
+        </div>
+      </div>
+    </div>
+</section>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="css">
+@font-face{
+  font-family: Nexa-Light;
+  src: url("../assets/fonts/Nexa-Light.otf");
+}
+@font-face
+{
+  font-family: Nexa-Heavy;
+  src:url("../assets/fonts/NexaHeavy.otf");
+}
+@font-face
+{
+  font-family:Nexa-Regular;
+  src:url("../assets/fonts/NexaRegular.otf");
+}
+#artistas{
+  font-family:Nexa-Regular;
+}
+.infoContainer{
+  height: 500px;
+  background-image: url('../assets/images/profile_image.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+.artistName{
+  color: white;
+  font-weight: 400;
+  font-size: 4.5rem;
+  vertical-align: middle;
+}
+.artistInfo{
+  color: #ff2e33;
+}
+.circle{
+  background-color: white;
+  width: 111px;
+  height: 108px;
+  font-size: 29px;
+  border-radius: 69px;
+  line-height: 57px;
+  margin-bottom: 0.5em;
+}
+.infoContainer .row{
+  padding-top: 5em;
+}
+.rounded-circle{
+  height: 324px;
+  width: 325px;
+  border: #ff2e33 18px solid;
+  margin-left: 5em;
+}
+.moreInfocontainer{
+  background-color: white;
+  height: 500px;
+}
+.description{
+  width: 530px;
+  color: #2d142c;
+  font-size: 25px;
+  text-align: justify;
+  margin-top: 18px;
+}
+.attributesContainer{
+  margin-top: 10em;
+}
+.attributesImg{
+  height: 80px;
+  width: 82px;
+}
+.imgContainer{
+  margin-right: 2em;
+  margin-left: 2em;
+}
+.extraImg{
+  height: 153px;
+  width: 158px;
+}
+.imgContainerExtra{
+  float: right;
+}
+.imgContainerExtra h5{
+  color: #ff2e33;
+}
+.cotizacionWrapper{
+  background-color: #510a32;
+  height: 600px;
+}
+.mediaPlayer img{
+  width: 85%;
+  margin-left: 6.5em;
+  margin-top: -10em;
+}
+.cotizacionContainer{
+  color: white;
+  margin-left: auto;
+  margin-top: -9em;
+}
+.cotizacionImg{
+  height: 137px;
+  width: 125px;
+}
+.cotizacionText{
+  font-size: 30px;
+  font-weight: 600;
+}
+.cotizacionNum{
+  font-size: 75px;
+  font-weight: 600;
+}
+.cotizacionContainer .attributesContainer{
+  margin-top: 7em;
+}
+.statsContainer{
+  color: white;
+  height: 400px;
+  background-color: #c72c41;
+}
+.socialIcons .fab{
+  font-size: 32px;
+  background-color: white;
+  color: #d8043c;
+  border-radius: 21px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 42px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+.progress{
+  width: 28em;
+  border-radius: 24px;
+  background-color: #ff2b32;
+  border: white 2px solid;
+  height: 3em;
+}
+.progress-bar{
+  background-color: #580030;
+}
+.socialContainer{
+  padding-top: 5em;
+}
+.nextStepsContainer{
+  padding: 30px;
+  margin:0;
+  color: white;
+  height: 500px;
+  background-color: #280c2a;
+}
+.nextStepOption{
+  border: #ff2b32 4px solid;
+  border-radius: 27px;
+  width: 75%;
+  font-size: 25px;
+  height: 27%;
+  margin-bottom: 1em;
+  line-height: 72px;
+}
+</style>
