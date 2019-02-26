@@ -2,22 +2,22 @@
   <section id="artistas">
     <div class="infoContainer">
       <div class="row">
-        <div class="col-9">
-          <h1 class="artistName">SOFÍA Y MARCELO</h1>
+        <div class="col-md-9 col-sm-12">
+          <h1 class="artistName">{{ artista }}</h1>
         </div>
-        <div class="col-3">
+        <div class="col-md-3 col-sm-12">
           <div class="circle text-center">
             <span class="artistInfo">NIVEL</span><br>
-            <span class="artistInfo">6</span>
+            <span class="artistInfo">{{nivel}}</span>
           </div>
-          <span class="artistInfo text-center">PLAN PREMIUM</span>
+          <span class="artistInfo text-center">{{tipoPlan}}</span>
         </div>
       </div>
       <div class="row">
-        <div class="col-4">
-          <img class="rounded-circle img-fluid" src="../assets/images/plo.jpg" alt="">
+        <div class="col-md-4 col-sm-12">
+            <img class="rounded-circle img-fluid" src="../assets/images/plo.jpg" alt="">
         </div>
-        <div class="col-8">
+        <div class="col-md-8 col-sm-12">
           <h4 class="artistInfo text-left"> MX Jalapa, Veracruz</h4>
           <h4 class="artistInfo text-left"> World Music / Acoustic / Ethnojazz / Bossa Nova / Folk Pop </h4>
         </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="moreInfocontainer">
       <div class="row text-center">
-        <span class="description">Sofía & Marcelo are an innovative Mexican duo who combine different musical elements to achieve an experience in the spectator. </span>
+        <span class="description">{{descripcion}}</span>
       </div>
       <div class="row imgContainerExtra">
         <img class="extraImg" src="../assets/images/PIM_international_purple.png" alt="">
@@ -57,18 +57,19 @@
         <div class="row text-center attributesContainer">
           <div class="imgContainer">
             <img class="cotizacionImg" src="../assets/images/PIM_spotlights_orange.png" alt=""><br>
-            <span class="cotizacionNum">65 </span> <br>
-            <span class="cotizacionText"> CIUDADES</span>
+            <span class="cotizacionNum">{{numConciertos}} </span> <br>
+            <span class="cotizacionText"> CONCIERTOS</span>
           </div>
           <div class="imgContainer">
             <img class="cotizacionImg" src="../assets/images/PIM_level_orange.png" alt=""><br>
-            <span class="cotizacionNum">65 </span> <br>
+            <span class="cotizacionNum">{{numCiudades}}</span> <br>
             <span class="cotizacionText"> CIUDADES</span>
           </div>
           <div class="imgContainer">
             <img class="cotizacionImg" src="../assets/images/PIM_money_orange.png" alt=""><br>
-            <span class="cotizacionNum">65 </span> <br>
-            <span class="cotizacionText"> CIUDADES</span>          </div>
+            <span class="cotizacionNum">${{numPresentaciones}}K </span> <br>
+            <span class="cotizacionText"> PRESENTACIÓN</span>
+          </div>
         </div>
       </div>
     </div>
@@ -77,15 +78,15 @@
         <div class="col-6 socialMedia">
           <div class="row">
             <div class="socialIcons">
-              <i class="fab fa-facebook-f"></i> <span> +35 likes</span> <br>
-              <i class="fab fa-twitter"></i> <span> 60% + comentarios</span><br>
-              <i class="fab fa-instagram"></i><span> 80% + seguidores</span> <br>
+              <i class="fab fa-facebook-f"></i> <span> +{{likes}} likes</span> <br>
+              <i class="fab fa-twitter"></i> <span> {{comentarios}}% + comentarios</span><br>
+              <i class="fab fa-instagram"></i><span> {{seguidores}}% + seguidores</span> <br>
             </div>
           </div>
         </div>
         <div class="col-6 planPremium">
           <span class="cotizacionText">PLAN PREMIUM</span> <br>
-          <span class="cotizacionNum">57%</span>
+          <span class="cotizacionNum">{{porcentajeNivel}}%</span>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 57%"></div>
           </div>
@@ -94,7 +95,7 @@
     </div>
     <div class="row nextStepsContainer">
       <div class="col-7">
-        <span class="cotizacionText">Hola, Sofia y Marcelo!</span><br>
+        <span class="cotizacionText">Hola, {{artista}}!</span><br>
         <span class="cotizacionText">Veo que hubo buena reacción en el evento de CDMX...</span><br>
         <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
       </div>
@@ -115,6 +116,21 @@
 
 <script>
 export default {
+  data(){
+    return{
+      artista: 'SOFÍA Y MARCELO',
+      nivel: 6,
+      tipoPlan: 'PLAN PREMIUM',
+      descripcion: 'Sofía & Marcelo are an innovative Mexican duo who combine different musical elements to achieve an experience in the spectator.',
+      numConciertos: 65,
+      numCiudades:12,
+      numPresentaciones: 15,
+      likes: 30,
+      comentarios:65,
+      seguidores:80,
+      porcentajeNivel:57,
+    }
+  }
 }
 </script>
 
