@@ -24,7 +24,7 @@
             <li> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
             <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
             <li class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
-            <li id="registrobtn"><a id="regbtn" href="http://proindiemusic-registro.mybluemix.net/">Regístrate</a></li>
+            <li id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
           </ul>
         </nav>
       </div>
@@ -66,6 +66,15 @@ export default {
   width: 150px;
   height: auto; }
 
+#registrobtn {
+  border: #cd3051;
+  border-style: solid;
+  border-radius: 40px;
+}
+#registrobtn a{
+    color: #cd3051;
+  margin-top: 8px;
+}
   .boton-buscar,
   .boton-menu {
     border: 0;

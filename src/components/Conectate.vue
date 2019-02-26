@@ -26,7 +26,9 @@
       </div>
       <div class="row">
         <span>¿Aún no tienes cuenta?</span>
-        <button type="button" name="button" class="registrateButton">Registrate</button>
+        <router-link :to="{ name: 'registrate', params: {} }">
+          <button type="button" name="button" class="registrateButton">Registrate</button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -104,6 +106,7 @@ export default {
   font-size: 23px;
   border-radius: 25px;
   margin-bottom: 2em;
+  border: 1px solid #ee4540;
 }
 .registrateButton{
   background-color: white;
