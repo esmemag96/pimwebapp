@@ -99,15 +99,15 @@
         <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
       </div>
       <div class="col-5 text-center">
-        <div class="nextStepOption">
+        <button class="nextStepOption">
           Programar concierto
-        </div>
-        <div class="nextStepOption">
+        </button>
+        <button class="nextStepOption">
           Publicación de agradecimiento
-        </div>
-        <div class="nextStepOption">
+        </button>
+        <button class="nextStepOption">
           Crear campaña publicitaria
-        </div>
+        </button>
       </div>
     </div>
 </section>
@@ -276,5 +276,7 @@ export default {
   height: 27%;
   margin-bottom: 1em;
   line-height: 72px;
+  background-color: #280c2a;
+  color: white;
 }
 </style>

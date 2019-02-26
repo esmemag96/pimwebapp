@@ -21,7 +21,6 @@
         <nav id="menu-principal" class="collapse">
           <ul>
             <li> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
-            <li> <router-link :to="{ name: 'comofunciona', params: {} }">Cómo funciona</router-link></li>
             <li> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
             <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
             <li class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
