@@ -1,12 +1,9 @@
 <template>
   <div id="app">
-    <PIMHeader/>
-    <div id="content">
+    <PIMHeader :authenticated="authenticated"/>
+    <!-- <div id="content">
       <router-view></router-view>
-    </div>
-    <nav class="nav">
-      <router-link v-if="authenticated" to="/artistas" v-on:click.native="logout()" replace>Logout</router-link>
-    </nav>
+    </div> -->
      <router-view @authenticated="setAuthenticated" />
     <PIMFooter/>
   </div>

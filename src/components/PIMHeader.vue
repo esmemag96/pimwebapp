@@ -24,9 +24,13 @@
             <li> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
             <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
             <li v-if="!authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
+            <li v-if="authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Cerrar sesión</router-link></li>
             <li v-if="!authenticated" id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
           </ul>
         </nav>
+        <!-- <div id="nav" @authenticated="setAuthenticated">
+            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+        </div> -->
       </div>
     </header>
   </section>
@@ -34,11 +38,20 @@
 
 <script>
 export default {
+  props:{
+    authenticated:{ type: Boolean, default: false},
+  },
   data() {
       return {
-          authenticated: false,
+
       }
   },
+  methods: {
+      logout() {
+          this.$parent.authenticated = false;
+          this.$router.replace({ name: "home" });
+      }
+  }
 }
 </script>
 
