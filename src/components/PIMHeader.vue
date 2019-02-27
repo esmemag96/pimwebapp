@@ -23,8 +23,8 @@
             <li> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
             <li> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
             <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
-            <li class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
-            <li id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
+            <li v-if="!authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
+            <li v-if="!authenticated" id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
           </ul>
         </nav>
       </div>
@@ -34,6 +34,11 @@
 
 <script>
 export default {
+  data() {
+      return {
+          authenticated: false,
+      }
+  },
 }
 </script>
 

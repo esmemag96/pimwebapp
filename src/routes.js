@@ -7,7 +7,7 @@ import RegistraBanda from './components/RegistraBanda.vue'
 
 
 const routes = [
-  {path: '/home', component:Home, name:'home'},
+  {path: '/', component:Home, name:'home'},
   {path: '/contacto', component:Contact, name:'contact'},
   {path: '/artistas', component:Artistas, name:'artistas'},
   {path: '/conectate', component:Conectate, name:'conectate'},

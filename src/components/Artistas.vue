@@ -116,6 +116,7 @@
 
 <script>
 export default {
+  name: 'artistas',
   data(){
     return{
       artista: 'SOFÍA Y MARCELO',

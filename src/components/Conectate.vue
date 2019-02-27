@@ -9,7 +9,8 @@
           <span class="textOrange">Correo de contacto</span>
         </div>
         <div class="col-6">
-          <input type="email" name="" value="" placeholder="    email@example.com">
+          <input type="email" name="email" v-model="input.email" placeholder="    email@example.com" />
+          <!-- <input type="email" name="" value="" placeholder="    email@example.com"> -->
         </div>
       </div>
       <div class="row">
@@ -17,17 +18,18 @@
           <span class="textOrange">Contraseña</span>
         </div>
         <div class="col-6">
-          <input type="password" name="" value="" placeholder="   **********"><br>
+          <input type="password" name="password" v-model="input.password" placeholder="Password" /><br>
+          <!-- <input type="password" name="" value="" placeholder="   **********"><br> -->
           <a href="">¿Olvidaste tu contraseña?</a>
         </div>
       </div>
       <div class="row">
-        <button type="button" name="button" class="inicioButton">Inicio</button>
+        <button type="button" name="button" class="inicioButton" v-on:click="login()">Inicio</button>
       </div>
       <div class="row">
         <span>¿Aún no tienes cuenta?</span>
         <router-link :to="{ name: 'registrate', params: {} }">
-          <button type="button" name="button" class="registrateButton">Registrate</button>
+          <button type="button" class="registrateButton">Registrate</button>
         </router-link>
       </div>
     </div>
@@ -37,8 +39,31 @@
 </template>
 
 <script>
-export default {
-}
+  export default {
+    name: 'Login',
+    data() {
+        return {
+            input: {
+                email: "",
+                password: ""
+            }
+        }
+    },
+    methods: {
+        login() {
+            if(this.input.email != "" && this.input.password != "") {
+                if(this.input.email == this.$parent.mockAccount.email && this.input.password == this.$parent.mockAccount.password) {
+                    this.$emit("authenticated", true);
+                    this.$router.replace({ name: "artistas" });
+                } else {
+                    console.log("The email and / or password is incorrect");
+                }
+            } else {
+                console.log("A email and password must be present");
+            }
+        }
+    }
+  }
 </script>
 
 <style lang="css">
