@@ -1,9 +1,13 @@
+/* eslint-disable */
 let moment = require("moment");
-
+let apiservice = require("./ApiService");
+let uuid = require("uuid");
 
 export class OAuth2 {
 
     constructor(){
+
+        this.apiService = new apiservice.ApiService();
 
         this.clientAuth ={
             "verifiedCEmail": true,
@@ -33,6 +37,58 @@ export class OAuth2 {
             })
             .then(res => [status, res])
             .catch(error => error);
+    }
+
+    async login(email, password){
+
+        const parent = this;
+
+        let body = {
+            redirect_uri: parent.clientAuth.redirect_uri[0],
+            client_id: parent.clientAuth.clientId,
+            state: uuid.v4(),
+            email: email,
+            password: password
+        };
+
+        const searchParams = Object.keys(body).map((key) => {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
+        }).join('&');
+
+        return parent.apiService.post({
+            url: `https://proindiemusic-oauth.mybluemix.net/oauth2/auth`,
+            params: searchParams,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        }).then((respuesta) => {
+            body = {
+                code: respuesta.payload.code,
+                grant_type: "authorization_code",
+                redirect_uri: parent.clientAuth.redirect_uri[0],
+                client_id: parent.clientAuth.clientId,
+                client_secret: parent.clientAuth.clientSecret
+            };
+
+            const searchParams = Object.keys(body).map((key) => {
+                return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
+            }).join('&');
+
+            return parent.apiService.post({
+                url: `https://proindiemusic-oauth.mybluemix.net/oauth2/token`,
+                params: searchParams,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                }
+            }).then((respuesta) => {
+                console.log("Login", respuesta);
+                localStorage.setItem('access_token', respuesta.access_token);
+                localStorage.setItem('refresh_token', respuesta.refresh_token);
+                localStorage.setItem('profile', JSON.stringify(respuesta.profile));
+                localStorage.setItem('expires_in', respuesta.expires_in);
+                return respuesta;
+            });
+        });
     }
 
     async onCheckRequest(token) {

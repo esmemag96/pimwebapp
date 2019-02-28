@@ -10,7 +10,7 @@
             <span class="textOrange">Nombre</span>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí">
+            <input type="text" name="name" v-model="input.nombre" value="" placeholder="Escribe aquí">
           </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
             <h4 class="textOrange">Correo de contacto</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="email@example.com">
+            <input type="email" name="email" v-model="input.email" value="" placeholder="email@example.com">
           </div>
         </div>
         <div class="row">
@@ -70,7 +70,7 @@
             <h4 class="textOrange">Integrantes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="integrantes" v-model="input.integrantes">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -84,7 +84,7 @@
             <h4 class="textOrange">Años de trayectoria</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name=trayectoria" v-model="input.trayectoria">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -100,7 +100,7 @@
             <h4 class="textOrange">Conciertos al año</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="con" v-model="input.trayectoria">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -274,11 +274,16 @@
     props: ["email", "password"],
     data(){
       return {
+        input: {
+          email: "",
+          password: "",
+          passwordConfirmation: "",
+        }
       }
     },
     methods: {
       register() {
-        console.log(this.props.email, this.props.password);
+        console.log(this.email, this.password);
       }
     }
   };

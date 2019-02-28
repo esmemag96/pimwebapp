@@ -1,3 +1,4 @@
+/* eslint-disable */
 let axios = require("axios");
 
 export class ApiService {
