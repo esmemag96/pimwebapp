@@ -4,6 +4,7 @@ import Artistas from './components/Artistas.vue'
 import Conectate from './components/Conectate.vue'
 import Registrate from './components/Registrate.vue'
 import RegistraBanda from './components/RegistraBanda.vue'
+import Admin from './components/Admin.vue'
 
 
 const routes = [
@@ -12,7 +13,8 @@ const routes = [
   {path: '/artistas', component:Artistas, name:'artistas'},
   {path: '/conectate', component:Conectate, name:'conectate'},
   {path: '/registrate', component:Registrate, name:'registrate'},
-  {path: '/registraBanda', component:RegistraBanda, name:'registrateBanda'},
+  {path: '/registraBanda', component:RegistraBanda, name:'registraBanda'},
+  {path: '/admin', component:Admin, name:'admin'},
 ]
 
 export default routes
