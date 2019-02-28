@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template lang="html">
   <section id="contacto">
     <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="background-color: #510a32;height: 313px;">
@@ -43,7 +44,7 @@
                           <b-button block href="#" v-b-toggle.accordion2 variant="info">¿Cómo puedo ver mi historial de transacciones?</b-button>
                         </b-card-header>
                         <b-collapse id="accordion2" accordion="my-accordion" role="tabpanel">
-                          <b-card-body<p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p></b-card-body>
+                          <b-card-body> <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p></b-card-body>
                         </b-collapse>
                       </b-card>
 
@@ -115,7 +116,7 @@
                           <b-button block href="#" v-b-toggle.accordion2 variant="info">¿Cómo puedo ver mi historial de transacciones?</b-button>
                         </b-card-header>
                         <b-collapse id="accordion2" accordion="my-accordion" role="tabpanel">
-                          <b-card-body<p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p></b-card-body>
+                          <b-card-body> <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p></b-card-body>
                         </b-collapse>
                       </b-card>
 

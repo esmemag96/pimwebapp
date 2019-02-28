@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template lang="html">
   <section id="home">
     <div class="bienvenidos">
