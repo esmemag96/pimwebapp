@@ -27,7 +27,7 @@ export class ApiService {
             method: 'post',
             url: options.url,
             data: options.params,
-            headers: Object.assign({}, this.axiosClient.headers, options.headers)
+            headers: options.headers
         }).then((response) => {
             return response.data;
         }).catch((err) => {

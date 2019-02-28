@@ -129,7 +129,14 @@
           }).then((respuesta) => {
             console.log("Register User", respuesta);
             oauth.login(this.input.email, this.input.password).then((respuesta) => {
-              this.$router.push({name: 'registraBanda', params: {email:this.input.email, password: this.input.password }});
+              if(respuesta && respuesta.id !== -1){
+                this.$router.push({
+                  name: 'registraBanda',
+                  params: {email: this.input.email, password: this.input.password}
+                });
+              }else {
+                alert("Hubo un error en el login, intenta de nuevo")
+              }
             });
           });
         }

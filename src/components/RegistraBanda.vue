@@ -360,10 +360,13 @@
               "Content-Type": "application/json",
               'Authorization': `Bearer ${await oauth.getToken().then((obj) => obj.access_token)}`
             },
-            params: JSON.stringify(val)
+            params: val
           }).then((respuesta) => {
-            console.log(respuesta)
-            this.$router.replace({ name: "artistas" });
+            console.log("Register Artist",respuesta)
+            if(respuesta && respuesta.message === "¡Genial! Se agregaron exitosamente los datos")
+              this.$router.replace({ name: "artistas" });
+            else
+              alert("No pude salvar el registro intenta de nuevo de favor")
           });
         }
       },
