@@ -19,12 +19,22 @@
           </div>
         </form>
         <nav id="menu-principal" class="collapse">
+<<<<<<< HEAD
+          <ul class="row">
+            <li class="col"> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
+            <li class="col" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
+            <li class="col"> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
+            <li v-if="!authenticated" class="nrig col"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
+            <li v-if="authenticated" class="nrig col"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Logout</router-link></li>
+            <li v-if="!authenticated" id="registrobtn" class="col"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
+=======
           <ul>
             <li> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
             <li class="col" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>            <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
             <li v-if="!authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
             <li v-if="authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Cerrar sesión</router-link></li>
             <li v-if="!authenticated" id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
+>>>>>>> 00f39f66aed8622e9b42f93cf5a80381478829b1
           </ul>
         </nav>
         <!-- <div id="nav" @authenticated="setAuthenticated">
