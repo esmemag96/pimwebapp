@@ -37,6 +37,7 @@
 </template>
 
 <script>
+  /* eslint-disable */
   import * as uuid from 'uuid';
   import * as ApiService from '../ApiService';
   import * as OAuth from '../OAuth2';
@@ -44,9 +45,7 @@
   let apiService = new ApiService.ApiService();
   let oauth = new OAuth.OAuth2();
 
-
   export default {
-    name: 'Login',
     data() {
       return {
         input: {

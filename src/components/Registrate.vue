@@ -42,8 +42,8 @@
 </template>
 
 <script>
+  /* eslint-disable */
   export default {
-    name: 'registrate',
     data() {
       return {
         input: {
@@ -56,10 +56,7 @@
     methods: {
       register() {
         if (this.input.email !== "" && this.input.password !== "" && this.passwordConfirmation !== "" && this.password === this.passwordConfirmation) {
-          this.$router.push({ path: "/registraBanda", params: {
-              email: this.input.email,
-              password: this.input.password
-            }});
+          this.$router.push({name: 'registraBanda', params: {email:this.input.email, password: this.input.password }});
         }
       }
     }

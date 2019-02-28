@@ -1,4 +1,5 @@
 <!--suppress ALL -->
+/* eslint-disable */
 <template lang="html">
   <section id="registerBand">
     <div class="formContainer">
@@ -267,80 +268,85 @@
 </template>
 
 <script>
-export default {
-  name: 'registraBanda',
-  props: ['email', 'password'],
-  methods: {
-    register() {
-      console.log(this.props.email, this.props.password);
+  /* eslint-disable */
+
+  export default {
+    props: ["email", "password"],
+    data(){
+      return {
+      }
+    },
+    methods: {
+      register() {
+        console.log(this.props.email, this.props.password);
+      }
     }
-  }
-};
+  };
 </script>
 
 <style lang="css">
-@font-face{
-  font-family: Nexa-Light;
-  src: url("../assets/fonts/Nexa-Light.otf");
-}
-@font-face
-{
-  font-family: Nexa-Heavy;
-  src:url("../assets/fonts/NexaHeavy.otf");
-}
-@font-face
-{
-  font-family:Nexa-Regular;
-  src:url("../assets/fonts/NexaRegular.otf");
-}
-#registerBand{
-  font-family:Nexa-Regular;
-  background-color: #590033;
-}
-.titulo{
-  margin-left: 3em;
-  color: white;
-  font-size: 57px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  padding-top: 1em;
-  margin-bottom: 1em;
-}
-.extra{
-  color: #ee4540;
-  margin-left: 10em;
-}
-.subtitle{
-  color: white;
-  font-size: 30px;
-  margin-left: 6em;
-  margin-top: 2em;
-}
-.formContainer input{
-  width: 70%;
-  border-radius: 10px;
-  height: 35px;
-}
-.formContainer select{
-  width: 40%;
-  border-radius: 10px;
-  height: 35px;
-}
-.formContainer button{
-  border-radius: 12px;
-  margin-right: 13px;
-  margin-bottom: 9px;
-  margin-top: 2px;
-}
-.registroButton{
-  background-color: #ee4540;
-  color: white;
-  width: 7em;
-  font-weight: 600;
-  font-size: 23px;
-  border-radius: 25px;
-  margin-bottom: 2em;
-  margin-top: 3em;
-  border: 1px solid #ee4540;
-}
+  @font-face{
+    font-family: Nexa-Light;
+    src: url("../assets/fonts/Nexa-Light.otf");
+  }
+  @font-face
+  {
+    font-family: Nexa-Heavy;
+    src:url("../assets/fonts/NexaHeavy.otf");
+  }
+  @font-face
+  {
+    font-family:Nexa-Regular;
+    src:url("../assets/fonts/NexaRegular.otf");
+  }
+  #registerBand{
+    font-family:Nexa-Regular;
+    background-color: #590033;
+  }
+  .titulo{
+    margin-left: 3em;
+    color: white;
+    font-size: 57px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-top: 1em;
+    margin-bottom: 1em;
+  }
+  .extra{
+    color: #ee4540;
+    margin-left: 10em;
+  }
+  .subtitle{
+    color: white;
+    font-size: 30px;
+    margin-left: 6em;
+    margin-top: 2em;
+  }
+  .formContainer input{
+    width: 70%;
+    border-radius: 10px;
+    height: 35px;
+  }
+  .formContainer select{
+    width: 40%;
+    border-radius: 10px;
+    height: 35px;
+  }
+  .formContainer button{
+    border-radius: 12px;
+    margin-right: 13px;
+    margin-bottom: 9px;
+    margin-top: 2px;
+  }
+  .registroButton{
+    background-color: #ee4540;
+    color: white;
+    width: 7em;
+    font-weight: 600;
+    font-size: 23px;
+    border-radius: 25px;
+    margin-bottom: 2em;
+    margin-top: 3em;
+    border: 1px solid #ee4540;
+  }
 </style>

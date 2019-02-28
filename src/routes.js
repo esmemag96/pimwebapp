@@ -7,10 +7,10 @@ import RegistraBanda from './components/RegistraBanda.vue'
 
 const routes = [
   {path: '/', component:Home, name:'home'},
-  {path: '/contacto', component:Contact, name:'contact'},
-  {path: '/artistas', component:Artistas, name:'artistas'},
-  {path: '/conectate', component:Conectate, name:'conectate'},
-  {path: '/registrate', component:Registrate, name:'registrate'},
+  {path: '/contacto', component:Contact, name:'contact', props: true},
+  {path: '/artistas', component:Artistas, name:'artistas', props: true},
+  {path: '/conectate', component:Conectate, name:'conectate', props: true},
+  {path: '/registrate', component:Registrate, name:'registrate', props: true},
   {path: '/registraBanda', component:RegistraBanda, name:'registraBanda', props: true},
 ]
 
