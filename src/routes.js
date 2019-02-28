@@ -5,14 +5,13 @@ import Conectate from './components/Conectate.vue'
 import Registrate from './components/Registrate.vue'
 import RegistraBanda from './components/RegistraBanda.vue'
 
-
 const routes = [
   {path: '/', component:Home, name:'home'},
   {path: '/contacto', component:Contact, name:'contact'},
   {path: '/artistas', component:Artistas, name:'artistas'},
   {path: '/conectate', component:Conectate, name:'conectate'},
   {path: '/registrate', component:Registrate, name:'registrate'},
-  {path: '/registraBanda', component:RegistraBanda, name:'registrateBanda'},
+  {path: '/registraBanda', component:RegistraBanda, name:'registraBanda', props: true},
 ]
 
 export default routes

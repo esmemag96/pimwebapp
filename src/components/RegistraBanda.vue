@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template lang="html">
   <section id="registerBand">
     <div class="formContainer">
@@ -68,7 +69,7 @@
             <h4 class="textOrange">Integrantes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -82,7 +83,7 @@
             <h4 class="textOrange">Años de trayectoria</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -98,7 +99,7 @@
             <h4 class="textOrange">Conciertos al año</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -113,7 +114,7 @@
             <h4 class="textOrange">Público en concierto</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -128,7 +129,7 @@
             <h4 class="textOrange">¿Conciertos en otro país?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -139,7 +140,7 @@
             <h4 class="textOrange">¿Sí? ¿Cuántos?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -163,7 +164,7 @@
             <h4 class="textOrange">Seguidores en facebook</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -178,7 +179,7 @@
             <h4 class="textOrange">Frecuencia de publicaciones en redes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -193,7 +194,7 @@
             <h4 class="textOrange">¿Cuántas reproducciones tiene tu video mas visto en Youtube?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -208,7 +209,7 @@
             <h4 class="textOrange">¿Tienes canal verificado en Spotify?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -243,7 +244,7 @@
             <h4 class="textOrange">¿Tienes canal música en Streaming?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -267,6 +268,17 @@
 
 <script>
 export default {
+  props:{
+    email:{ type: String, default: ""},
+    password: { type: String, default: ""},
+  },
+  data() {
+    return {}
+  },
+  methods: {
+    show(){
+    }
+  }
 }
 </script>
 

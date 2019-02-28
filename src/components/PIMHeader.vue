@@ -21,8 +21,7 @@
         <nav id="menu-principal" class="collapse">
           <ul>
             <li> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
-            <li> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
-            <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
+            <li class="col" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>            <li> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
             <li v-if="!authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
             <li v-if="authenticated" class="nrig"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Cerrar sesión</router-link></li>
             <li v-if="!authenticated" id="registrobtn"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
