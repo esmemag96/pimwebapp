@@ -261,25 +261,21 @@
       </form>
     </div>
     <div class="row">
-      <button type="button" name="button" class="registroButton">Registrar</button>
+      <button type="button" name="button" class="registroButton" v-on:click="register()">Registrar</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  props:{
-    email:{ type: String, default: ""},
-    password: { type: String, default: ""},
-  },
-  data() {
-    return {}
-  },
+  name: 'registraBanda',
+  props: ['email', 'password'],
   methods: {
-    show(){
+    register() {
+      console.log(this.props.email, this.props.password);
     }
   }
-}
+};
 </script>
 
 <style lang="css">

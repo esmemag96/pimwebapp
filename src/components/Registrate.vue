@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row">
-          <button type="button" name="button" class="inicioButton" v-on:click="register()">Registrarse</button>
+        <button type="button" name="button" class="inicioButton" v-on:click="register()">Registrarse</button>
       </div>
       <div class="row">
         <span>¿Ya tienes cuenta?</span>
@@ -43,7 +43,7 @@
 
 <script>
   export default {
-    name: 'Registrate',
+    name: 'registrate',
     data() {
       return {
         input: {
@@ -54,57 +54,12 @@
       }
     },
     methods: {
-      login() {
-        if(this.input.email !== "" && this.input.password !== "") {
-
-          let body = {
-            redirect_uri: oauth.clientAuth.redirect_uri[0],
-            client_id: oauth.clientAuth.clientId,
-            state: uuid.v4(),
-            email: this.input.email,
-            password: this.input.password
-          };
-
-          const searchParams = Object.keys(body).map((key) => {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-          }).join('&');
-
-          apiService.post({
-            url: `https://proindiemusic-oauth.mybluemix.net/oauth2/auth`,
-            params: searchParams,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            }
-          }).then((respuesta) => {
-            body = {
-              code: respuesta.payload.code,
-              grant_type: "authorization_code",
-              redirect_uri: oauth.clientAuth.redirect_uri[0],
-              client_id: oauth.clientAuth.clientId,
-              client_secret: oauth.clientAuth.clientSecret
-            };
-
-            const searchParams = Object.keys(body).map((key) => {
-              return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-            }).join('&');
-
-            apiService.post({
-              url: `https://proindiemusic-oauth.mybluemix.net/oauth2/token`,
-              params: searchParams,
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              }
-            }).then((respuesta) => {
-              localStorage.setItem('access_token', respuesta.access_token);
-              localStorage.setItem('refresh_token', respuesta.refresh_token);
-              localStorage.setItem('profile', JSON.stringify(respuesta.profile));
-              localStorage.setItem('expires_in', respuesta.expires_in);
-              this.$emit("authenticated", true);
-              this.$router.replace({ name: "artistas" });
-            });
-          });
-        } else {
-          console.log("A email and password must be present");
+      register() {
+        if (this.input.email !== "" && this.input.password !== "" && this.passwordConfirmation !== "" && this.password === this.passwordConfirmation) {
+          this.$router.push({ path: "/registraBanda", params: {
+              email: this.input.email,
+              password: this.input.password
+            }});
         }
       }
     }
