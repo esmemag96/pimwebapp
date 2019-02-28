@@ -11,15 +11,15 @@ export class OAuth2 {
 
         this.clientAuth ={
             "verifiedCEmail": true,
-                "clientId": "100000002-TCdM7gkyR0btu6OkZCgF1G6Ee4vyBuqQLYyF4P4JWVfQn.oauth2user.aabo.tech",
-                "cEmail": "backend@proindiemusic.mx",
-                "fullName": "Backend Connector",
-                "clientSecret": "U5MV4wuCfmQ4dQDxQyLRQpdYAUaN7Y",
-                "redirect_uri": [
+            "clientId": "100000002-TCdM7gkyR0btu6OkZCgF1G6Ee4vyBuqQLYyF4P4JWVfQn.oauth2user.aabo.tech",
+            "cEmail": "backend@proindiemusic.mx",
+            "fullName": "Backend Connector",
+            "clientSecret": "U5MV4wuCfmQ4dQDxQyLRQpdYAUaN7Y",
+            "redirect_uri": [
                 "https://proindiemusic-backend.mybluemix.net"
             ],
-                "status": "true",
-                "oauth2": "ttps://proindiemusic-oauth.mybluemix.net/"
+            "status": "true",
+            "oauth2": "ttps://proindiemusic-oauth.mybluemix.net/"
         };
     }
 
@@ -107,90 +107,85 @@ export class OAuth2 {
     }
 
     async getToken() {
-        try {
-            const parent = this;
-            const access_token = localStorage.getItem('access_token');
-            const profile = localStorage.getItem('profile');
-            const refresh_token = localStorage.getItem('refresh_token');
-            const expires_in = localStorage.getItem('expires_in');
+        return new Promise(function(resolve, reject) {
+            try {
+                const parent = this;
+                const access_token = localStorage.getItem('access_token');
+                const profile = localStorage.getItem('profile');
+                const refresh_token = localStorage.getItem('refresh_token');
+                const expires_in = localStorage.getItem('expires_in');
 
-            if (expires_in && access_token && refresh_token && profile) {
-                const time = moment(expires_in);
-                if (time.isAfter(moment())) {
-                    return{
-                        access_token,
-                        profile: JSON.parse(profile)
-                    };
-                }
-            }
-
-            if (access_token) {
-
-                return parent.onCheckRequest(access_token).then(function (valid) {
-
-                    if (valid[0] === 200) {
-                        return {
-                            access_token,
-                            profile: JSON.parse(profile)
-                        };
-                    } else if ((valid[0] === 400 || valid[0] === 401) && refresh_token) {
-                        const body = {
-                            refresh_token: refresh_token,
-                            grant_type: "refresh_token",
-                            client_id: parent.clientAuth.clientId,
-                            client_secret: parent.clientAuth.clientSecret
-                        };
-
-                        const searchParams = Object.keys(body).map((key) => {
-                            return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-                        }).join('&');
-
-                        return parent.onSetRequest(searchParams).then(function (valid) {
-
-                            if (valid[0] === 200) {
-                                localStorage.setItem("access_token", valid[1]["access_token"]);
-
-                                return {
-                                    access_token: valid[1]["access_token"],
-                                    profile: JSON.parse(localStorage.getItem("profile"))
-                                };
-                            } else {
-                                parent.clearToken();
-                                return {
-                                    access_token: null,
-                                    profile: null
-                                };
-                            }
-                        }).catch(() => {
-                            parent.clearToken();
-                            return {
-                                access_token: null,
-                                profile: null
-                            };
+                if (expires_in && access_token && refresh_token && profile) {
+                    const time = moment(expires_in);
+                    if (time.isAfter(moment())) {
+                        return resolve({
+                            access_token
                         });
                     }
-                }).catch(() => {
-                    parent.clearToken();
-                    return {
-                        access_token: null,
-                        profile: null
-                    };
-                });
-            } else {
-                parent.clearToken();
-                return {
-                    access_token: null,
-                    profile: null
-                };
-            }
+                }
 
-        } catch (err) {
-            parent.clearToken();
-            return {
-                access_token: null,
-                profile: null
-            };
-        }
+                if (access_token) {
+
+                    return parent.onCheckRequest(access_token).then(function (valid) {
+
+                        if (valid[0] === 200) {
+                            return resolve({
+                                access_token
+                            });
+                        } else if ((valid[0] === 400 || valid[0] === 401) && refresh_token) {
+                            const body = {
+                                refresh_token: refresh_token,
+                                grant_type: "refresh_token",
+                                client_id: parent.clientAuth.clientId,
+                                client_secret: parent.clientAuth.clientSecret
+                            };
+
+                            const searchParams = Object.keys(body).map((key) => {
+                                return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
+                            }).join('&');
+
+                            return parent.onSetRequest(searchParams).then(function (valid) {
+
+                                if (valid[0] === 200) {
+                                    localStorage.setItem("access_token", valid[1]["access_token"]);
+
+                                    return resolve({
+                                        access_token: valid[1]["access_token"]
+                                    });
+                                } else {
+                                    parent.clearToken();
+                                    return resolve({
+                                        access_token: null
+                                    });
+                                }
+                            }).catch(() => {
+                                parent.clearToken();
+                                return resolve({
+                                    access_token: null
+                                });
+                            });
+                        }
+                    }).catch(() => {
+                        parent.clearToken();
+                        return resolve({
+                            access_token: null
+                        });
+                    });
+                } else {
+                    parent.clearToken();
+                    return resolve({
+                        access_token: null
+                    });
+                }
+
+            } catch (err) {
+                console.log(err);
+                parent.clearToken();
+                return resolve({
+                    access_token: null
+                });
+            }
+        });
     }
 
     clearToken() {

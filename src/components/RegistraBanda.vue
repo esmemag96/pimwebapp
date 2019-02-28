@@ -10,7 +10,7 @@
             <span class="textOrange">Nombre</span>
           </div>
           <div class="col-6">
-            <input type="text" name="name" v-model="input.nombre" value="" placeholder="Escribe aquí">
+            <input type="text" name="name" v-model="input.name" value="" placeholder="Escribe aquí">
           </div>
         </div>
         <div class="row">
@@ -29,38 +29,20 @@
           <div class="col-6">
             <div class="row">
               <div class="col">
-                <button type="button" name="button">Blues</button>
-                <button type="button" name="button">Country</button>
-                <button type="button" name="button">Pop</button>
-                <button type="button" name="button">Rock</button>
-                <button type="button" name="button">Metal</button>
+                <button type="button" name="button" v-on:click="addShandraw('Blues')">Blues</button>
+                <button type="button" name="button" v-on:click="addShandraw('Country')">Country</button>
+                <button type="button" name="button" v-on:click="addShandraw('Pop')">Pop</button>
+                <button type="button" name="button" v-on:click="addShandraw('Rock')">Rock</button>
+                <button type="button" name="button" v-on:click="addShandraw('Metal')">Metal</button>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <button type="button" name="button">Ranchero</button>
-                <button type="button" name="button">Salsa</button>
-                <button type="button" name="button">Tango</button>
-                <button type="button" name="button">Jazz</button>
-                <button type="button" name="button">Cumbiaton</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <button type="button" name="button">Blues</button>
-                <button type="button" name="button">Country</button>
-                <button type="button" name="button">Pop</button>
-                <button type="button" name="button">Electrocumbia</button>
-                <button type="button" name="button">Metal</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <button type="button" name="button">Ranchero</button>
-                <button type="button" name="button">Salsa</button>
-                <button type="button" name="button">Tango</button>
-                <button type="button" name="button">Electrocumbia</button>
-                <button type="button" name="button">Cumbiaton</button>
+                <button type="button" name="button" v-on:click="addShandraw('Ranchero')">Ranchero</button>
+                <button type="button" name="button" v-on:click="addShandraw('Salsa')">Salsa</button>
+                <button type="button" name="button" v-on:click="addShandraw('Tango')">Tango</button>
+                <button type="button" name="button" v-on:click="addShandraw('Jazz')">Jazz</button>
+                <button type="button" name="button" v-on:click="addShandraw('Cumbiaton')">Cumbiaton</button>
               </div>
             </div>
           </div>
@@ -84,7 +66,7 @@
             <h4 class="textOrange">Años de trayectoria</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name=trayectoria" v-model="input.trayectoria">
+            <select class="form-control" name="trayectoria" v-model="input.trayectoria">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -100,13 +82,38 @@
             <h4 class="textOrange">Conciertos al año</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="con" v-model="input.trayectoria">
+            <select class="form-control" name="conciertos" v-model="input.conciertos">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="textOrange">Costo por Concierto</h4>
+          </div>
+          <div class="col-6">
+            <select class="form-control" name="costPerConcert" v-model="input.costPerConcert">
+              <option>Seleccionar</option>
+              <option>10000</option>
+              <option>20000</option>
+              <option>30000</option>
+              <option>40000</option>
+              <option>50000</option>
+              <option>60000</option>
+              <option>70000</option>
+              <option>80000</option>
+              <option>90000</option>
+              <option>100000</option>
             </select>
           </div>
         </div>
@@ -115,13 +122,13 @@
             <h4 class="textOrange">Público en concierto</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="publico" v-model="input.publico">
               <option>Seleccionar</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option>1000</option>
+              <option>2000</option>
+              <option>3000</option>
+              <option>4000</option>
+              <option>5000</option>
             </select>
           </div>
         </div>
@@ -130,9 +137,9 @@
             <h4 class="textOrange">¿Conciertos en otro país?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="internacional" v-model="input.internacional">
               <option>Sí</option>
-              <option>No</option>
+              <option selected>No</option>
             </select>
           </div>
         </div>
@@ -141,13 +148,18 @@
             <h4 class="textOrange">¿Sí? ¿Cuántos?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option>Seleccionar</option>
+            <select class="form-control" name="cuantos" v-model="input.cuantos">
+              <option selected>0</option>
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
             </select>
           </div>
         </div>
@@ -156,7 +168,7 @@
             <h4 class="textOrange">¿En cuáles países?</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí los países separados por comas">
+            <input type="email" name="paises" v-model="input.paises" value="" placeholder="Escribe aquí los países separados por comas">
           </div>
         </div>
         <h3 class="subtitle">Redes Sociales</h3>
@@ -165,13 +177,17 @@
             <h4 class="textOrange">Seguidores en facebook</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option>Seleccionar</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control" name="facebook" v-model="input.facebook">
+              <option>1000</option>
+              <option>2000</option>
+              <option>3000</option>
+              <option>4000</option>
+              <option>5000</option>
+              <option>6000</option>
+              <option>7000</option>
+              <option>8000</option>
+              <option>9000</option>
+              <option>10000</option>
             </select>
           </div>
         </div>
@@ -180,8 +196,7 @@
             <h4 class="textOrange">Frecuencia de publicaciones en redes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option>Seleccionar</option>
+            <select class="form-control" name="frecuencia" v-model="input.frecuencia">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -195,13 +210,17 @@
             <h4 class="textOrange">¿Cuántas reproducciones tiene tu video mas visto en Youtube?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
-              <option>Seleccionar</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control" name="youtube" v-model="input.youtube">
+              <option>1000</option>
+              <option>2000</option>
+              <option>3000</option>
+              <option>4000</option>
+              <option>5000</option>
+              <option>6000</option>
+              <option>7000</option>
+              <option>8000</option>
+              <option>9000</option>
+              <option>10000</option>
             </select>
           </div>
         </div>
@@ -210,7 +229,7 @@
             <h4 class="textOrange">¿Tienes canal verificado en Spotify?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="spotify" v-model="input.spotify">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -221,7 +240,7 @@
             <h4 class="textOrange">Link de Fan Page</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí">
+            <input type="text" name="fanpage" v-model="input.fanpage" value="" placeholder="Escribe aquí">
           </div>
         </div>
         <div class="row">
@@ -229,7 +248,7 @@
             <h4 class="textOrange">Link de VideoClip</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí">
+            <input type="email" name="videoclip" v-model="input.videoclip" value="" placeholder="Escribe aquí">
           </div>
         </div>
         <div class="row">
@@ -237,7 +256,7 @@
             <h4 class="textOrange">Link de Video en Vivo</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí">
+            <input type="email" name="videoVivo" v-model="input.videoVivo" value="" placeholder="Escribe aquí">
           </div>
         </div>
         <div class="row">
@@ -245,7 +264,7 @@
             <h4 class="textOrange">¿Tienes canal música en Streaming?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control">
+            <select class="form-control" name="streaming" v-model="input.streaming">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -256,7 +275,7 @@
             <h4 class="textOrange">¿Sí? ¿Cuál?</h4>
           </div>
           <div class="col-6">
-            <input type="email" name="" value="" placeholder="Escribe aquí">
+            <input type="email" name="streamingCual" v-model="input.streamingCual" value="" placeholder="Escribe aquí">
           </div>
         </div>
       </form>
@@ -269,21 +288,87 @@
 
 <script>
   /* eslint-disable */
+  import * as ApiService from '../ApiService';
+  import * as OAuth from '../OAuth2';
+
+  let apiService = new ApiService.ApiService();
+  let oauth = new OAuth.OAuth2();
 
   export default {
     props: ["email", "password"],
-    data(){
+    data() {
       return {
+        shandraw: [],
         input: {
-          email: "",
-          password: "",
-          passwordConfirmation: "",
+          name: "",
+          email: this.email,
+          integrantes: "",
+          trayectoria: "",
+          conciertos: "",
+          publico: "",
+          costPerConcert: "",
+          internacional: "No",
+          cuantos: 0,
+          paises: "",
+          facebook: "",
+          frecuencia: "",
+          youtube: "",
+          spotify: "",
+          fanpage: "",
+          videoclip: "",
+          videoVivo: "",
+          streaming: "",
+          streamingCual: ""
         }
       }
     },
     methods: {
-      register() {
-        console.log(this.email, this.password);
+      async register() {
+        let bool = 0;
+        Object.entries(this.input).forEach(([key, value]) => {
+          bool = (!value || value === "") ? bool + 1 : bool;
+        });
+
+        let val = {
+          bandName: this.input.name,
+          email: this.input.email,
+          shandraw: this.shandraw.join(","),
+          photo: "https://static.wixstatic.com/media/bbcdc0_359f54dc7f8f4f0b8337b59b1ca88614~mv2.png/v1/fill/w_280,h_280,al_c,usm_0.66_1.00_0.01/Perfil-%20PIM%2001.png",
+          trayectory: parseFloat(this.input.trayectoria),
+          costPerPresentation: parseFloat(this.input.costPerConcert),
+          internationalConcerts: parseFloat(this.input.cuantos),
+          concertsPerYear: parseFloat(this.input.conciertos),
+          attendancePerConcert: parseFloat(this.input.publico),
+          socialMediaFollowUp: parseFloat(this.input.frecuencia),
+          liveVideo: this.input.videoVivo,
+          studioVideo: this.input.videoclip,
+          pressKit: this.input.fanpage,
+          numOfMemebers: parseInt(this.input.integrantes),
+          places: this.input.paises,
+          facebookFollowers: parseInt(this.input.facebook),
+          youtubeMustViewVideo: parseInt(this.input.youtube),
+          hasSpotify: this.input.spotify == "Si" ? true:false,
+          streamingChannel: this.input.streaming == "Si" ? this.input.streamingCual:null
+        }
+
+        console.log(val, bool, this.shandraw.length)
+
+        if (bool === 0 && this.shandraw.length != 0) {
+          apiService.post({
+            url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist`,
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${await oauth.getToken().then((obj) => obj.access_token)}`
+            },
+            params: JSON.stringify(val)
+          }).then((respuesta) => {
+            console.log(respuesta)
+            this.$router.replace({ name: "artistas" });
+          });
+        }
+      },
+      async addShandraw(value) {
+        this.shandraw.push(value);
       }
     }
   };
