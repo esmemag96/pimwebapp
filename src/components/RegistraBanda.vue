@@ -453,6 +453,9 @@
   .generosContainer{
     text-align: center;
   }
+  .titulo {
+    margin-left: 0.5em;
+  }
 
 }
 </style>
