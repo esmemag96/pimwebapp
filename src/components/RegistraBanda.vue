@@ -38,11 +38,17 @@
             </div>
             <div class="row">
               <div class="col">
-                <button type="button" name="button" v-on:click="addShandraw('Ranchero')">Ranchero</button>
-                <button type="button" name="button" v-on:click="addShandraw('Salsa')">Salsa</button>
-                <button type="button" name="button" v-on:click="addShandraw('Tango')">Tango</button>
+                <button type="button" name="button" v-on:click="addShandraw('Rock')">Rock</button>
+                <button type="button" name="button" v-on:click="addShandraw('Pop')">Pop</button>
+                <button type="button" name="button" v-on:click="addShandraw('Alternativo')">Alternativo</button>
+                <button type="button" name="button" v-on:click="addShandraw('Country')">Country</button>
                 <button type="button" name="button" v-on:click="addShandraw('Jazz')">Jazz</button>
-                <button type="button" name="button" v-on:click="addShandraw('Cumbiaton')">Cumbiaton</button>
+                <button type="button" name="button" v-on:click="addShandraw('Cantautor')">Cantautor/Cantante</button>
+                <button type="button" name="button" v-on:click="addShandraw('Latino')">Latino</button>
+                <button type="button" name="button" v-on:click="addShandraw('World')">World</button>
+                <button type="button" name="button" v-on:click="addShandraw('Afrobeat')">Afrobeat</button> 
+                <button type="button" name="button" v-on:click="addShandraw('Hip Hop')">Hip Hop</button>
+                <button type="button" name="button" v-on:click="addShandraw('R & B')">R & B</button>               
               </div>
             </div>
           </div>
@@ -59,6 +65,21 @@
               <option>3</option>
               <option>4</option>
               <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
             </select>          </div>
         </div>
         <div class="row">
@@ -68,11 +89,10 @@
           <div class="col-6">
             <select class="form-control" name="trayectoria" v-model="input.trayectoria">
               <option>Seleccionar</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option>Menos de 1</option>
+              <option>1 a 3</option>
+              <option>4 a 8</option>
+              <option>Más de 10</option>
             </select>
           </div>
         </div>
@@ -84,16 +104,10 @@
           <div class="col-6">
             <select class="form-control" name="conciertos" v-model="input.conciertos">
               <option>Seleccionar</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
+              <option>Menos de 12</option>
+              <option>12 a 19</option>
+              <option>20 a 25</option>
+              <option>Más de 25</option>
             </select>
           </div>
         </div>
@@ -104,16 +118,10 @@
           <div class="col-6">
             <select class="form-control" name="costPerConcert" v-model="input.costPerConcert">
               <option>Seleccionar</option>
-              <option>10000</option>
-              <option>20000</option>
-              <option>30000</option>
-              <option>40000</option>
-              <option>50000</option>
-              <option>60000</option>
-              <option>70000</option>
-              <option>80000</option>
-              <option>90000</option>
-              <option>100000</option>
+              <option>Menoos de 12</option>
+              <option>De 12 a 20</option>
+              <option>De 20 a 25</option>
+              <option>Más de 25</option>
             </select>
           </div>
         </div>
@@ -124,11 +132,10 @@
           <div class="col-6">
             <select class="form-control" name="publico" v-model="input.publico">
               <option>Seleccionar</option>
-              <option>1000</option>
-              <option>2000</option>
-              <option>3000</option>
-              <option>4000</option>
-              <option>5000</option>
+              <option>20 a 50</option>
+              <option>60 a 150</option>
+              <option>Mas de 200</option>
+              
             </select>
           </div>
         </div>
@@ -150,16 +157,10 @@
           <div class="col-6">
             <select class="form-control" name="cuantos" v-model="input.cuantos">
               <option selected>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
+              <option>De 1 a 10</option>
+              <option>10 a 20</option>
+              <option>Más de 20</option>
+              
             </select>
           </div>
         </div>
@@ -178,16 +179,10 @@
           </div>
           <div class="col-6">
             <select class="form-control" name="facebook" v-model="input.facebook">
-              <option>1000</option>
-              <option>2000</option>
-              <option>3000</option>
-              <option>4000</option>
-              <option>5000</option>
-              <option>6000</option>
-              <option>7000</option>
-              <option>8000</option>
-              <option>9000</option>
-              <option>10000</option>
+              <option>Menos de 500</option>
+              <option>de 1000 a 5000</option>
+              <option>De 5000 a 12000</option>
+              <option>Más de 12000</option>
             </select>
           </div>
         </div>
@@ -197,11 +192,10 @@
           </div>
           <div class="col-6">
             <select class="form-control" name="frecuencia" v-model="input.frecuencia">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option>1 vez por semana</option>
+              <option>4 veces por semana</option>
+              <option>7 veces por semana</option>
+              <option>Más de 14 veces por semana</option>
             </select>
           </div>
         </div>
@@ -211,16 +205,11 @@
           </div>
           <div class="col-6">
             <select class="form-control" name="youtube" v-model="input.youtube">
-              <option>1000</option>
-              <option>2000</option>
-              <option>3000</option>
-              <option>4000</option>
-              <option>5000</option>
-              <option>6000</option>
-              <option>7000</option>
-              <option>8000</option>
-              <option>9000</option>
-              <option>10000</option>
+              <option>No tengo videos en Youtube</option>
+              <option>Menos de 100</option>
+              <option>100 a 500</option>
+              <option>500 a 1000</option>
+              <option>Más de 1000</option>
             </select>
           </div>
         </div>

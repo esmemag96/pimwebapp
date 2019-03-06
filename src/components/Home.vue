@@ -9,7 +9,7 @@
                 <span style="color:#cd3051">GRATIS</span></h4>
                 <h4 class="display-4 wow fadeIn textBold">¿Buscas oportunidades en festivales y eventos<br>a nivel nacional e internacional?</h4>
                 <h4 class="display-4 wow fadeIn textRegular">¡Forma parte de la comunidad!</h4>
-                <a  href="contacto.html" class="btn btn-primary btn-lg textBold">ÚNETE AHORA</a>
+                <router-link :to="{ name: 'registrate', params: {} }" class="btn btn-primary btn-lg textBold" >ÚNETE AHORA </router-link>
               </div>
             </div>
             <div class="flecha-bajar text-center">
@@ -39,10 +39,11 @@
               <div class="col-md-16  wow fadeIn" data-wow-delay=".6s">
                 <ul class="listaH">
                   <li>México</li>
-                  <li>Chile</li>
-                  <li>Colombia</li>
+                  <li>Peru</li>
                   <li>Estados Unidos</li>
-                  <li>Costa Rica</li>
+                  <li>Argentina</li>
+                  <li>Colombia</li>
+                  <li>Dinamarca</li>
                 </ul>
               </div>
 

@@ -19,7 +19,7 @@ export class OAuth2 {
                 "https://proindiemusic-backend.mybluemix.net"
             ],
             "status": "true",
-            "oauth2": "ttps://proindiemusic-oauth.mybluemix.net/"
+            "oauth2": "https://proindiemusic-oauth.mybluemix.net/"
         };
     }
 
@@ -51,7 +51,7 @@ export class OAuth2 {
             password: password
         };
 
-        const searchParams = Object.keys(body).map((key) => {
+        let searchParams = Object.keys(body).map((key) => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
         }).join('&');
 
@@ -70,9 +70,12 @@ export class OAuth2 {
                 client_secret: parent.clientAuth.clientSecret
             };
 
-            const searchParams = Object.keys(body).map((key) => {
+            searchParams = Object.keys(body).map((key) => {
                 return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
             }).join('&');
+
+
+            
 
             return parent.apiService.post({
                 url: `https://proindiemusic-oauth.mybluemix.net/oauth2/token`,

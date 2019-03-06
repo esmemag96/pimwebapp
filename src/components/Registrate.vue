@@ -22,7 +22,7 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <span class="textOrange">Nombre para Mostrar</span>
+          <span class="textOrange">Nombre de Usuario</span>
         </div>
         <div class="col-6">
           <input type="text" name="name" v-model="input.name" value="" placeholder="    Nombre a Mostrar">
@@ -30,7 +30,7 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <span class="textOrange">Pais</span>
+          <span class="textOrange">Pais y Ciudad</span>
         </div>
         <div class="col-6">
           <input type="text" name="pais" v-model="input.pais" value="" placeholder="    Pais">
