@@ -63,9 +63,9 @@
       <div class="row">
         <button type="button" name="button" class="inicioButton" v-on:click="register()">Registrarse</button>
       </div>
-      <div class="row">
-        <span>¿Ya tienes cuenta?</span>
-        <router-link :to="{ name: 'conectate', params: {} }">
+      <div class="row text-center">
+        <span class="col-12">¿Ya tienes cuenta?</span>
+        <router-link :to="{ name: 'conectate', params: {} }" class="col-12">
           <button type="button" name="button" class="registrateButton">Conéctate</button>
         </router-link>
       </div>
@@ -146,73 +146,104 @@
 </script>
 
 <style lang="css">
-  @font-face{
-    font-family: Nexa-Light;
-    src: url("../assets/fonts/Nexa-Light.otf");
-  }
-  @font-face
-  {
-    font-family: Nexa-Heavy;
-    src:url("../assets/fonts/NexaHeavy.otf");
-  }
-  @font-face
-  {
-    font-family:Nexa-Regular;
-    src:url("../assets/fonts/NexaRegular.otf");
-  }
-  #register{
-    font-family:Nexa-Regular;
+@font-face{
+  font-family: Nexa-Light;
+  src: url("../assets/fonts/Nexa-Light.otf");
+}
+@font-face
+{
+  font-family: Nexa-Heavy;
+  src:url("../assets/fonts/NexaHeavy.otf");
+}
+@font-face
+{
+  font-family:Nexa-Regular;
+  src:url("../assets/fonts/NexaRegular.otf");
+}
+#register{
+  font-family:Nexa-Regular;
+}
+.imageregister{
+  height: 500px;
+  background-image: url('../assets/images/register_image.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: inherit;
+}
+.imageregister h1{
+  color: white;
+  font-family: Nexa-Regular;
+  font-size: 55px;
+  font-weight: 600;
+  margin-left: 3em;
+  letter-spacing: 2px;
+  padding-top: 7em;
+}
+.registerInfo{
+  height: 800px;
+  padding-top: 5em
+}
+.textOrange{
+  color: #ee4540;
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 5em;
+}
+.registerInfo input{
+  width: 70%;
+  border-radius: 20px;
+  border: 2px #b1b0b0 solid;
+  height: 35px;
+  margin-left: -9em;
+}
+.registerInfo a{
+  color: #ee4540;
+}
+.registerInfo .row{
+  margin-bottom: 2em;
+}
+.inicioButton{
+  background-color: #ee4540;
+  color: white;
+  width: 7em;
+  font-weight: 600;
+  font-size: 23px;
+  border-radius: 25px;
+  margin-bottom: 2em;
+  border: 1px solid #ee4540;
+}
+.registrateButton{
+  background-color: white;
+  color: #ee4540;
+  width: 8em;
+  font-weight: 600;
+  font-size: 17px;
+  border-radius: 25px;
+  border: 3px solid #ee4540;
+}
+@media only screen and (max-width: 768px) {
+  .imageregister h1 {
+    font-size: 40px;
+    margin-left: 0.5em;
+    padding-top:3em;
   }
   .imageregister{
-    height: 500px;
-    background-image: url('../assets/images/register_image.jpg');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position-y: inherit;
+    height: 14em;
   }
-  .imageregister h1{
-    color: white;
-    font-family: Nexa-Regular;
-    font-size: 55px;
-    font-weight: 600;
-    margin-left: 3em;
-    letter-spacing: 2px;
-    padding-top: 7em;
-  }
-  .registerInfo{
-    height: 800px;
-    padding-top: 5em
-  }
-  .textOrange{
+  .textOrange {
     color: #ee4540;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 600;
-    margin-left: 5em;
+    margin-left: 1em;
   }
-  .registerInfo input{
-    width: 70%;
+  .registerInfo input {
+    width: 100%;
     border-radius: 20px;
     border: 2px #b1b0b0 solid;
     height: 35px;
-    margin-left: -9em;
+    margin-left: -1em;
   }
-  .registerInfo a{
-    color: #ee4540;
-  }
-  .registerInfo .row{
-    margin-bottom: 2em;
-  }
-  .inicioButton{
-    background-color: #ee4540;
-    color: white;
-    width: 7em;
-    font-weight: 600;
-    font-size: 23px;
-    border-radius: 25px;
-    margin-bottom: 2em;
-    border: 1px solid #ee4540;
-  }
-  .registrateButton{
+  .registrateButton {
     background-color: white;
     color: #ee4540;
     width: 8em;
@@ -220,6 +251,7 @@
     font-size: 17px;
     border-radius: 25px;
     border: 3px solid #ee4540;
-    margin-left: 8em;
+    margin-left: 0;
   }
+}
 </style>

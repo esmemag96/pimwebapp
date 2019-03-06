@@ -6,10 +6,10 @@
       <h1 class="titulo">Registra tu banda</h1>
       <form class="" action="index.html" method="post">
         <div class="row">
-          <div class="col-6">
+          <div class="col">
             <span class="textOrange">Nombre</span>
           </div>
-          <div class="col-6">
+          <div class="col">
             <input type="text" name="name" v-model="input.name" value="" placeholder="Escribe aquí">
           </div>
         </div>
@@ -22,12 +22,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h4 class="textOrange">Género</h4>
             <span class="extra">Selecciona los que identifiquen a tu banda</span>
           </div>
-          <div class="col-6">
-            <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="row generosContainer">
               <div class="col">
                 <button type="button" name="button" v-on:click="addShandraw('Blues')">Blues</button>
                 <button type="button" name="button" v-on:click="addShandraw('Country')">Country</button>
@@ -36,7 +36,7 @@
                 <button type="button" name="button" v-on:click="addShandraw('Metal')">Metal</button>
               </div>
             </div>
-            <div class="row">
+            <div class="row generosContainer">
               <div class="col">
                 <button type="button" name="button" v-on:click="addShandraw('Rock')">Rock</button>
                 <button type="button" name="button" v-on:click="addShandraw('Pop')">Pop</button>
@@ -46,9 +46,9 @@
                 <button type="button" name="button" v-on:click="addShandraw('Cantautor')">Cantautor/Cantante</button>
                 <button type="button" name="button" v-on:click="addShandraw('Latino')">Latino</button>
                 <button type="button" name="button" v-on:click="addShandraw('World')">World</button>
-                <button type="button" name="button" v-on:click="addShandraw('Afrobeat')">Afrobeat</button> 
+                <button type="button" name="button" v-on:click="addShandraw('Afrobeat')">Afrobeat</button>
                 <button type="button" name="button" v-on:click="addShandraw('Hip Hop')">Hip Hop</button>
-                <button type="button" name="button" v-on:click="addShandraw('R & B')">R & B</button>               
+                <button type="button" name="button" v-on:click="addShandraw('R & B')">R & B</button>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
             <h4 class="textOrange">Integrantes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="integrantes" v-model="input.integrantes">
+            <select class="form-control mb-1" name="integrantes" v-model="input.integrantes">
               <option>Seleccionar</option>
               <option>1</option>
               <option>2</option>
@@ -87,7 +87,7 @@
             <h4 class="textOrange">Años de trayectoria</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="trayectoria" v-model="input.trayectoria">
+            <select class="form-control mb-1" name="trayectoria" v-model="input.trayectoria">
               <option>Seleccionar</option>
               <option>Menos de 1</option>
               <option>1 a 3</option>
@@ -102,7 +102,7 @@
             <h4 class="textOrange">Conciertos al año</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="conciertos" v-model="input.conciertos">
+            <select class="form-control mb-1" name="conciertos" v-model="input.conciertos">
               <option>Seleccionar</option>
               <option>Menos de 12</option>
               <option>12 a 19</option>
@@ -116,7 +116,7 @@
             <h4 class="textOrange">Costo por Concierto</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="costPerConcert" v-model="input.costPerConcert">
+            <select class="form-control mb-1" name="costPerConcert" v-model="input.costPerConcert">
               <option>Seleccionar</option>
               <option>Menoos de 12</option>
               <option>De 12 a 20</option>
@@ -130,12 +130,12 @@
             <h4 class="textOrange">Público en concierto</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="publico" v-model="input.publico">
+            <select class="form-control mb-1" name="publico" v-model="input.publico">
               <option>Seleccionar</option>
               <option>20 a 50</option>
               <option>60 a 150</option>
               <option>Mas de 200</option>
-              
+
             </select>
           </div>
         </div>
@@ -144,7 +144,7 @@
             <h4 class="textOrange">¿Conciertos en otro país?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="internacional" v-model="input.internacional">
+            <select class="form-control mb-1" name="internacional" v-model="input.internacional">
               <option>Sí</option>
               <option selected>No</option>
             </select>
@@ -155,12 +155,12 @@
             <h4 class="textOrange">¿Sí? ¿Cuántos?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="cuantos" v-model="input.cuantos">
+            <select class="form-control mb-1" name="cuantos" v-model="input.cuantos">
               <option selected>0</option>
               <option>De 1 a 10</option>
               <option>10 a 20</option>
               <option>Más de 20</option>
-              
+
             </select>
           </div>
         </div>
@@ -178,7 +178,7 @@
             <h4 class="textOrange">Seguidores en facebook</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="facebook" v-model="input.facebook">
+            <select class="form-control mb-1" name="facebook" v-model="input.facebook">
               <option>Menos de 500</option>
               <option>de 1000 a 5000</option>
               <option>De 5000 a 12000</option>
@@ -191,7 +191,7 @@
             <h4 class="textOrange">Frecuencia de publicaciones en redes</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="frecuencia" v-model="input.frecuencia">
+            <select class="form-control mb-1" name="frecuencia" v-model="input.frecuencia">
               <option>1 vez por semana</option>
               <option>4 veces por semana</option>
               <option>7 veces por semana</option>
@@ -204,7 +204,7 @@
             <h4 class="textOrange">¿Cuántas reproducciones tiene tu video mas visto en Youtube?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="youtube" v-model="input.youtube">
+            <select class="form-control mb-1" name="youtube" v-model="input.youtube">
               <option>No tengo videos en Youtube</option>
               <option>Menos de 100</option>
               <option>100 a 500</option>
@@ -218,7 +218,7 @@
             <h4 class="textOrange">¿Tienes canal verificado en Spotify?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="spotify" v-model="input.spotify">
+            <select class="form-control mb-1" name="spotify" v-model="input.spotify">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -253,7 +253,7 @@
             <h4 class="textOrange">¿Tienes canal música en Streaming?</h4>
           </div>
           <div class="col-6">
-            <select class="form-control" name="streaming" v-model="input.streaming">
+            <select class="form-control mb-1" name="streaming" v-model="input.streaming">
               <option>Sí</option>
               <option>No</option>
             </select>
@@ -367,68 +367,92 @@
 </script>
 
 <style lang="css">
-  @font-face{
-    font-family: Nexa-Light;
-    src: url("../assets/fonts/Nexa-Light.otf");
+@font-face{
+  font-family: Nexa-Light;
+  src: url("../assets/fonts/Nexa-Light.otf");
+}
+@font-face
+{
+  font-family: Nexa-Heavy;
+  src:url("../assets/fonts/NexaHeavy.otf");
+}
+@font-face
+{
+  font-family:Nexa-Regular;
+  src:url("../assets/fonts/NexaRegular.otf");
+}
+#registerBand{
+  font-family:Nexa-Regular;
+  background-color: #590033;
+}
+.titulo{
+  margin-left: 3em;
+  color: white;
+  font-size: 57px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding-top: 1em;
+  margin-bottom: 1em;
+}
+.extra{
+  color: #ee4540;
+  margin-left: 10em;
+}
+.subtitle{
+  color: white;
+  font-size: 30px;
+  margin-left: 6em;
+  margin-top: 2em;
+}
+.formContainer input{
+  width: 70%;
+  border-radius: 10px;
+  height: 35px;
+}
+.formContainer select{
+  width: 40%;
+  border-radius: 10px;
+  height: 35px;
+}
+.formContainer button{
+  border-radius: 12px;
+  margin-right: 13px;
+  margin-bottom: 9px;
+  margin-top: 2px;
+}
+.registroButton{
+  background-color: #ee4540;
+  color: white;
+  width: 7em;
+  font-weight: 600;
+  font-size: 23px;
+  border-radius: 25px;
+  margin-bottom: 2em;
+  margin-top: 3em;
+  border: 1px solid #ee4540;
+}
+@media only screen and (max-width: 768px) {
+  .formContainer input {
+      width: 80%;
+      border-radius: 10px;
+      height: 35px;
   }
-  @font-face
-  {
-    font-family: Nexa-Heavy;
-    src:url("../assets/fonts/NexaHeavy.otf");
+  .formContainer select {
+    width: 55%;
+    border-radius: 10px;
+    height: 35px;
   }
-  @font-face
-  {
-    font-family:Nexa-Regular;
-    src:url("../assets/fonts/NexaRegular.otf");
+  .subtitle {
+    margin-left: 0.5em;
   }
-  #registerBand{
-    font-family:Nexa-Regular;
-    background-color: #590033;
-  }
-  .titulo{
-    margin-left: 3em;
-    color: white;
-    font-size: 57px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    padding-top: 1em;
-    margin-bottom: 1em;
-  }
-  .extra{
+  .extra {
     color: #ee4540;
-    margin-left: 10em;
+    margin-left: 1em;
+    font-size: 13px;
   }
-  .subtitle{
-    color: white;
-    font-size: 30px;
-    margin-left: 6em;
-    margin-top: 2em;
+  .generosContainer{
+    text-align: center;
   }
-  .formContainer input{
-    width: 70%;
-    border-radius: 10px;
-    height: 35px;
-  }
-  .formContainer select{
-    width: 40%;
-    border-radius: 10px;
-    height: 35px;
-  }
-  .formContainer button{
-    border-radius: 12px;
-    margin-right: 13px;
-    margin-bottom: 9px;
-    margin-top: 2px;
-  }
-  .registroButton{
-    background-color: #ee4540;
-    color: white;
-    width: 7em;
-    font-weight: 600;
-    font-size: 23px;
-    border-radius: 25px;
-    margin-bottom: 2em;
-    margin-top: 3em;
-    border: 1px solid #ee4540;
-  }
+
+}
 </style>

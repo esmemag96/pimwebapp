@@ -24,12 +24,12 @@
             <div>
               <b-card no-body>
                 <h4 class="textoCategorias">Categorías</h4>
-                <b-tabs pills card vertical nav-wrapper-class="w-25">
+                <b-tabs pills card vertical nav-wrapper-class="">
                   <b-tab title="Información General" active>
                     <div role="tablist">
                       <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
-                          <b-button block href="#" v-b-toggle.accordion1 variant="info">¿Que es Pro Indie Music?</b-button>
+                          <b-button block href="#" v-b-toggle.accordion1 variant="info">¿Qué es Pro Indie Music?</b-button>
                         </b-card-header>
                         <b-collapse id="accordion1" accordion="my-accordion" role="tabpanel">
                           <b-card-body>
@@ -40,7 +40,7 @@
 
                       <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
-                          <b-button block href="#" v-b-toggle.accordion2 variant="info">¿Que hace Pro Indie Music por mi banda?</b-button>
+                          <b-button block href="#" v-b-toggle.accordion2 variant="info">¿Qué hace Pro Indie Music por mi banda?</b-button>
                         </b-card-header>
                         <b-collapse id="accordion2" accordion="my-accordion" role="tabpanel">
                           <b-card-body> <p class="card-text">Evalúa el nivel en el que se encuentra - Pro Indie Music cuenta con 16 niveles de crecimiento. Brinda un plan de actividades designadas diseñadas para generar un crecimiento constante y una vez que alcanzas el nivel  3, puedes formar parte de nuestra comunidad SM, donde encontrarás oportunidades en venues a nivel nacional, festivales nacionales e internacionales, convocatorias federales y mercados internacionales para la exponencial lización de tu proyecto.</p></b-card-body>
@@ -106,7 +106,7 @@
                         </b-collapse>
                       </b-card>
 
-                      <b-card no-body class="mb-1"> 
+                      <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                           <b-button block href="#" v-b-toggle.accordion4 variant="info">¿Que es la automatización de actividades?</b-button>
                         </b-card-header>
@@ -116,11 +116,11 @@
                           </b-card-body>
                         </b-collapse>
 
-                        
+
                       </b-card>
                     </div>
                   </b-tab>
-                  
+
                   <b-tab title="Booking & Management">
                     <div role="tablist">
 
@@ -181,7 +181,7 @@
 
                     </div>
                   </b-tab>
-                  
+
                   <b-tab title="Atención al Cliente">
                     <div role="tablist">
                       <b-card no-body class="mb-1">
@@ -239,7 +239,7 @@
                           <b-card-body><p class="card-text">Evaluación en la industria musical, plan de actividades automatizadas, acceso a más de 800 oportunidades en festivales, venues, mercados y convenios exclusivos de Pro Indie Music.</p></b-card-body>
                         </b-collapse>
                       </b-card>
-                      
+
 
                     </div>
                   </b-tab>
@@ -265,7 +265,7 @@
                         </b-collapse>
                       </b-card>
 
-                      <b-card no-body class="mb-1"> 
+                      <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                           <b-button block href="#" v-b-toggle.accordion3 variant="info">¿Que diferencia hay ser parte de Pro Indie Music Emergente  y Pro Indie Music SM?</b-button>
                         </b-card-header>
@@ -274,7 +274,6 @@
                             <p class="card-text">Pro Indie Music Emergente es únicamente para tener los elementos básicos (Research Goals) para tu proyecto. Las oportunidades en festivales, venues y mercados a nivel mundial se otorgan en Pro Indie Music SM. Además de tener el sistema de recomendaciones y acciones automatizadas y tener un control de tu crecimiento y proyección en la industria musical.</p>
                           </b-card-body>
                         </b-collapse>
-                        
                       </b-card>
 
                        <b-card no-body class="mb-1">
@@ -285,12 +284,8 @@
                           <b-card-body><p class="card-text">No podrás acceder a oportunidades en festivales, venues, mercados y servicios exclusivos.</p></b-card-body>
                         </b-collapse>
                       </b-card>
-
-
                     </div>
                   </b-tab>
-
-
                 </b-tabs>
               </b-card>
             </div>
@@ -298,7 +293,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-xl-center align-items-xl-center" style="background-color: #2d142c;height: 750px;">
+    <div class="d-flex justify-content-xl-center align-items-xl-center contactFormContainer">
       <div class="container">
         <div class="row">
           <div class="col-md-6 d-flex flex-column justify-content-start" style="background-color: transparent;height: inherit;width: 574px;">
@@ -315,10 +310,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="social-icons" style="background-color: #2d142c;padding-top: 58px;padding-bottom: 30px;"><a href="#"><i class="icon ion-social-twitter" style="background-color: #ee4540;color: rgb(255,255,255);"></i></a><a href="#"><i class="icon ion-social-facebook" style="background-color: #ee4540;color: rgb(255,255,255);"></i></a><a href="#"><i class="icon ion-social-snapchat" style="background-color: #ee4540;color: rgb(255,255,255);"></i></a>
-      <a
-      href="#"><i class="icon ion-social-youtube" style="background-color: #ee4540;color: rgb(255,255,255);"></i></a>
     </div>
   </section>
 </template>
@@ -346,17 +337,21 @@ export default {
 #contacto{
   font-family:Nexa-Regular;
 }
+.contactFormContainer{
+  background-color: #2d142c;
+  height: 750px;
+}
 .tabsContainer{
   margin:0;
   width: 100%;
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-  color: #fff;
-  background-color: #ff2e33;
+  color: #fff !important;
+  background-color: #ff2e33 !important;
 }
 .nav-item a{
-  color: black;
-  font-weight: 600;
+  color: black !important;
+  font-weight: 600 !important;
 }
 .tabsContainer .card{
   border: none;
@@ -365,16 +360,16 @@ export default {
   color: #ff001f;
 }
 .btn-info {
-  font-weight: 600;
-  color: #ff001f;
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
+  font-weight: 600 !important;
+  color: #ff001f !important;
+  background-color: #f7f7f7 !important;
+  border-color: #f7f7f7 !important;
 }
 .btn-info:hover {
-  color: #840e43;
-  text-decoration: underline;
-  background-color: #f7f7f7;
-  border-color: #f7f7f7;
+  color: #840e43 !important;
+  text-decoration: underline !important;
+  background-color: #f7f7f7 !important;
+  border-color: #f7f7f7 !important;
 }
 .textoCategorias{
   color: #ff001f;
@@ -382,5 +377,18 @@ export default {
 }
 .form-control{
   border-radius: 20px;
+}
+.btn-info:focus, .btn-info.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(255, 47, 50, 0.3);
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .contactFormContainer{
+    height: 1000px;
+  }
+  .contactFormContainer .row{
+    margin-top: 10em;
+  }
 }
 </style>

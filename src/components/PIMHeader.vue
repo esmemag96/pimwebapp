@@ -7,17 +7,9 @@
           <img class="logoimg" src="../assets/images/pimm.png" alt="Logo del sitio">
         </router-link>
       </div>
-      <button type="button" class="boton-buscar" data-toggle="collapse" data-target="#bloque-buscar" aria-expanded="false">
-      </button>
-      <!-- <button type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-      </button> -->
-        <form action="#" id="bloque-buscar" class="collapse">
-          <div class="contenedor-bloque-buscar">
-            <input type="text" placeholder="Buscar...">
-            <input type="submit" value="Buscar">
-          </div>
-        </form>
+        <button type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
         <nav id="menu-principal" class="collapse">
           <ul class="row">
             <li class="col"> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
@@ -28,9 +20,6 @@
             <li v-if="!authenticated" id="registrobtn" class="col"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
           </ul>
         </nav>
-        <!-- <div id="nav" @authenticated="setAuthenticated">
-            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-        </div> -->
       </div>
     </header>
   </section>
@@ -81,146 +70,171 @@ export default {
           flex-wrap: wrap; }
 
 .encabezado .logo img {
-  width: 150px;
-  height: auto; }
+width: 150px;
+height: auto; }
 
+.navbar, .navbar-inverse {
+	border-radius: 0;
+	border: none;
+	margin-bottom: 0;
+	min-height: 80px;
+}
+
+.nav li {
+	display: inline;
+	color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #ffffff;
+	font-family: Lato;
+	font-size: 1.7em;
+	font-weight: 300;
+	padding: 30px 25px 33px 25px;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+	background-color: #444444;
+	transition: 0.7s all linear;
+	height: 100%;
+}
 #registrobtn {
   border: #cd3051;
   border-style: solid;
   border-radius: 40px;
 }
 #registrobtn a{
-    color: #cd3051;
-  margin-top: 8px;
+  color: #cd3051;
+margin-top: 8px;
 }
-  .boton-buscar,
-  .boton-menu {
-    border: 0;
-    font-size: 2rem;
-    margin: 0;
-    padding: 0 .5rem;
-    background: transparent;
-    color: #fff; }
+.boton-buscar,
+.boton-menu {
+  border: 0;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0 .5rem;
+  background: transparent;
+  color: #fff; }
 
-  .boton-buscar:focus,
-  .boton-menu:focus {
-    outline: 0; }
+.boton-buscar:focus,
+.boton-menu:focus {
+  outline: 0; }
 
-  .boton-buscar {
-    margin-left: auto;
-    margin-right: .8rem; }
+.boton-buscar {
+  margin-left: auto;
+  margin-right: .8rem; }
 
 
-  /*Estilos bloque buscar*/
-  #bloque-buscar {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%; }
+/*Estilos bloque buscar*/
+#bloque-buscar {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%; }
 
-  .contenedor-bloque-buscar {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    height: 3rem;
-    margin: 1rem 0; }
+.contenedor-bloque-buscar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3rem;
+  margin: 1rem 0; }
 
-  .contenedor-bloque-buscar input[type="text"] {
-    border: 0;
-    border-radius: 5px 0 0 5px;
-    padding: 1rem;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto; }
+.contenedor-bloque-buscar input[type="text"] {
+  border: 0;
+  border-radius: 5px 0 0 5px;
+  padding: 1rem;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto; }
 
-  .contenedor-bloque-buscar input[type="submit"] {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    border: 0;
-    border-radius: 0 5px 5px 0;
-    background: #cd3051;
-    color: #fff;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 1 auto;
-        -ms-flex: 0 1 auto;
-            flex: 0 1 auto;
-    padding: 0 1rem; }
+.contenedor-bloque-buscar input[type="submit"] {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+  background: #cd3051;
+  color: #fff;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  padding: 0 1rem; }
 
-  #menu-principal {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%;
-  }
-  #menu-principal ul li{
-      border-color: #cd3051;
-      color: #cd3051;
-  }
+#menu-principal {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+#menu-principal ul li{
+    border-color: #cd3051;
+    color: #cd3051;
+}
 
-  #menu-principal ul {
-    padding: 0;
-    list-style: none;
-    margin: 1rem 0 0 0; }
+#menu-principal ul {
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 0 0; }
 
-  #menu-principal ul a {
-    display: block;
-    padding: .8rem 0;
-    text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    border-top: 1px solid #8c8888;
-    text-decoration: none; }
+#menu-principal ul a {
+  display: block;
+  padding: .8rem 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  border-top: 1px solid #8c8888;
+  text-decoration: none; }
 
-  #menu-principal ul a:hover,
-  #menu-principal ul li.active a {
-    color: #cd3051; }
+#menu-principal ul a:hover,
+#menu-principal ul li.active a {
+  color: #cd3051; }
 
-  .texto-encabezado {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  /*CAMBIOS AQUI*/
-  .display-4{
-      font-size: 1.5rem;
-  }
+.texto-encabezado {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+/*CAMBIOS AQUI*/
+.display-4{
+    font-size: 1.5rem;
+}
 
-  .texto-encabezado .display-4 {
-    margin-top: 4rem; }
+.texto-encabezado .display-4 {
+  margin-top: 4rem; }
 
-  .texto-encabezado .btn-primary {
-    margin-top: 1rem; }
+.texto-encabezado .btn-primary {
+  margin-top: 1rem; }
 
-  .btn-primary {
-    color: #fff;
-    background-color: #ee4540;
-    border-color: transparent;
-      border-radius: 30px;
-    -webkit-transition: all .5s ease;
-            transition: all .5s ease; }
+.btn-primary {
+  color: #fff;
+  background-color: #ee4540;
+  border-color: transparent;
+    border-radius: 30px;
+  -webkit-transition: all .5s ease;
+          transition: all .5s ease; }
 
-  .btn-primary:hover,
-  .btn-primary:focus,
-  .btn-primary:active:hover {
-    background-color: #4e2178;
-    border-color: transparent; }
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active:hover {
+  background-color: #4e2178;
+  border-color: transparent; }
 
-  .flecha-bajar a {
-    display: inline-block;
-    color: #fff;
-    font-size: 4rem;
-    -webkit-animation: flecha-animada 2s ease-in-out infinite;
-            animation: flecha-animada 2s ease-in-out infinite; }
+.flecha-bajar a {
+  display: inline-block;
+  color: #fff;
+  font-size: 4rem;
+  -webkit-animation: flecha-animada 2s ease-in-out infinite;
+          animation: flecha-animada 2s ease-in-out infinite; }
 </style>

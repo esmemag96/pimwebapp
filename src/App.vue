@@ -8,7 +8,6 @@
     <PIMFooter/>
   </div>
 </template>
-
 <script>
 import PIMHeader from './components/PIMHeader.vue'
 import PIMFooter from './components/PIMFooter.vue'

@@ -18,14 +18,14 @@
           </div>
           <div class="agencia py-1" id="agencia2">
             <div class="container">
-              <div style="display: flex; align-items: center;justify-content: center" class="">
+              <div style=" align-items: center;justify-content: center" class="">
                 <p id="margen-top-p"style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Heavy;"class="wow fadeIn">Forma parte de nuestra comunidad<br>completamente <span style="color: #ee4540">GRATIS!</span></p>
               </div>
               <div style="display: flex; align-items: center;justify-content: center" class="">
                 <p style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Light;"class="wow fadeIn">Contamos con el apoyo de <span style="color: #ee4540">más de 500 festivales,</span><br>venues mercados y organizaciones en la industria musical</p>
               </div>
               <div style="margin-bottom: 40px;" class="carrouselContainer">
-                <carousel :autoplay="false" :nav="false" :dots="false":number=4 :center="true">
+                <carousel :autoplay="false" :nav="false" :dots="false":number=4 :responsive="{0:{items:1,nav:false}}">
                   <img class="img-carousel" src="../assets/images/festivals_camden.png">
                   <img class="img-carousel" src="../assets/images/festivals_cordoba.png">
                   <img class="img-carousel" src="../assets/images/festivals_dells.png">
