@@ -261,7 +261,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <h4 class="textOrange">¿Sí? ¿Cuál?</h4>
+            <h4 class="textOrange">¿Si? ¿Cuál?</h4>
           </div>
           <div class="col-6">
             <input type="email" name="streamingCual" v-model="input.streamingCual" value="" placeholder="Escribe aquí">

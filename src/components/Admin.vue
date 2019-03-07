@@ -1,47 +1,130 @@
 <template lang="html">
-  <div>
-    <b-table responsive striped small hover :items="items"/>
-  </div>
+  <div id="appartists" class="container">
+          <!-- Formulario para añadir artists -->
+          <section class="form">
+              <form action="" class="text-center">
+                  <input v-model="nombre" @keyup.enter="crearartist" type="text" class="form-control" placeholder="Nombre">
+                  <input v-model="edad" @keyup.enter="crearartist" type="number" name="edad" placeholder="Edad" class="form-control">
+                  <!-- Botón para añadir -->
+                  <input @click="crearartist" type="button" value="Añadir" class="btn btn-success">
+              </form>
+          </section>
+          <!-- Tabla donde se muestran los datos -->
+          <section class="data">
+              <caption>artists</caption>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Edad</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr v-for="(artist, index) in artists">
+                          <td>{{ artist.id }}</td>
+                          <td>
+                              <span v-if="formActualizar && idActualizar == index">
+                                  <!-- Formulario para actualizar -->
+                                  <input v-model="nombreActualizar" type="text" class="form-control">
+                              </span>
+                              <span v-else>
+                                  <!-- Dato nombre -->
+                                  {{ artist.nombre }}
+                              </span>
+                          </td>
+                          <td>
+                              <span v-if="formActualizar && idActualizar == index">
+                                  <!-- Formulario para actualizar -->
+                                  <input v-model="edadActualizar" type="text" class="form-control">
+                              </span>
+                              <span v-else>
+                                  <!-- Dato edad -->
+                                  {{ artist.edad }}
+                              </span>
+                          </td>
+                          <td>
+                              <!-- Botón para guardar la información actualizada -->
+                              <span v-if="formActualizar && idActualizar == index">
+                                  <button @click="guardarActualizacion(index)" class="btn btn-success">Guardar</button>
+                              </span>
+                              <span v-else>
+                                  <!-- Botón para mostrar el formulario de actualizar -->
+                                  <button @click="modalShow = !modalShow" class="btn btn-warning">Actualizar</button>
+                                  <!-- Update Modal -->
+                                  <b-modal v-model="modalShow">Hello From Modal!
+                                    <div class="artistData">
+                                      
+                                    </div>
+                                  </b-modal>
+                                  <!-- <button @click="verFormActualizar(index)" class="btn btn-warning">Actualizar</button> -->
+                                  <!-- Botón para borrar -->
+                                  <button @click="borrarartist(index)" class="btn btn-danger">Borrar</button>
+                              </span>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </section>
+      </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      items: [
-          {id: 0, uuid: '3fa85f64-5717-4562-b3fc-2c963f66afa6', status: true, dateCreated: '2019-02-27T22:40:51.199Z',
-          dateModified: "2019-02-27T22:40:51.199Z", bandName: "string", email: "user@example.com", shandraw: "string",
-          photo: "string", trayectory: 0, costPerPresentation: 0, internationalConcerts: 0, concertsPerYear: 0,
-          attendancePerConcert: 0, socialMediaFollowUp: 0, liveVideo: "string", studioVideo: "string", pressKit: "string",
-          level: "emergente", sublevel: 0, completeness: 0, review: "string", step1: "string", step2: "string", step3: "string",
-          additionalProp1: {} },
-          {id: 0, uuid: '3fa85f64-5717-4562-b3fc-2c963f66afa6', status: true, dateCreated: '2019-02-27T22:40:51.199Z',
-          dateModified: "2019-02-27T22:40:51.199Z", bandName: "string", email: "user@example.com", shandraw: "string",
-          photo: "string", trayectory: 0, costPerPresentation: 0, internationalConcerts: 0, concertsPerYear: 0,
-          attendancePerConcert: 0, socialMediaFollowUp: 0, liveVideo: "string", studioVideo: "string", pressKit: "string",
-          level: "emergente", sublevel: 0, completeness: 0, review: "string", step1: "string", step2: "string", step3: "string",
-          additionalProp1: {} },
-          {id: 0, uuid: '3fa85f64-5717-4562-b3fc-2c963f66afa6', status: true, dateCreated: '2019-02-27T22:40:51.199Z',
-          dateModified: "2019-02-27T22:40:51.199Z", bandName: "string", email: "user@example.com", shandraw: "string",
-          photo: "string", trayectory: 0, costPerPresentation: 0, internationalConcerts: 0, concertsPerYear: 0,
-          attendancePerConcert: 0, socialMediaFollowUp: 0, liveVideo: "string", studioVideo: "string", pressKit: "string",
-          level: "emergente", sublevel: 0, completeness: 0, review: "string", step1: "string", step2: "string", step3: "string",
-          additionalProp1: {} },
-          {id: 0, uuid: '3fa85f64-5717-4562-b3fc-2c963f66afa6', status: true, dateCreated: '2019-02-27T22:40:51.199Z',
-          dateModified: "2019-02-27T22:40:51.199Z", bandName: "string", email: "user@example.com", shandraw: "string",
-          photo: "string", trayectory: 0, costPerPresentation: 0, internationalConcerts: 0, concertsPerYear: 0,
-          attendancePerConcert: 0, socialMediaFollowUp: 0, liveVideo: "string", studioVideo: "string", pressKit: "string",
-          level: "emergente", sublevel: 0, completeness: 0, review: "string", step1: "string", step2: "string", step3: "string",
-          additionalProp1: {} },
-          {id: 0, uuid: '3fa85f64-5717-4562-b3fc-2c963f66afa6', status: true, dateCreated: '2019-02-27T22:40:51.199Z',
-          dateModified: "2019-02-27T22:40:51.199Z", bandName: "string", email: "user@example.com", shandraw: "string",
-          photo: "string", trayectory: 0, costPerPresentation: 0, internationalConcerts: 0, concertsPerYear: 0,
-          attendancePerConcert: 0, socialMediaFollowUp: 0, liveVideo: "string", studioVideo: "string", pressKit: "string",
-          level: "emergente", sublevel: 0, completeness: 0, review: "string", step1: "string", step2: "string", step3: "string",
-          additionalProp1: {} },
-      ]
-    }
-  }
+          data(){
+            return{
+              // Input nombre
+              nombre: '',
+              // Input edad
+              edad: '',
+              // Ver o no ver el formulario de actualizar
+              formActualizar: false,
+              // La posición de tu lista donde te gustaría actualizar
+              idActualizar: -1,
+              // Input nombre dentro del formulario de actualizar
+              nombreActualizar: '',
+              // Input edad dentro del formulario de actualizar
+              edadActualizar: '',
+              // Lista de artists
+              artists: [],
+              modalShow: false
+            }
+          },
+          methods: {
+              crearartist: function () {
+                  // Anyadimos a nuestra lista
+                  this.artists.push({
+                      id: + new Date(),
+                      nombre: this.nombre,
+                      edad: this.edad
+                  });
+                  // Vaciamos el formulario de añadir
+                  this.nombre = '';
+                  this.edad = '';
+              },
+              verFormActualizar: function (artist_id) {
+                  // Antes de mostrar el formulario de actualizar, rellenamos sus campos
+                  this.idActualizar = artist_id;
+                  this.nombreActualizar = this.artists[artist_id].nombre;
+                  this.edadActualizar = this.artists[artist_id].edad;
+                  // Mostramos el formulario
+                  this.formActualizar = true;
+              },
+              borrarartist: function (artist_id) {
+                  // Borramos de la lista
+                  this.artists.splice(artist_id, 1);
+              },
+              guardarActualizacion: function (artist_id) {
+                  // Ocultamos nuestro formulario de actualizar
+                  this.formActualizar = false;
+                  // Actualizamos los datos
+                  this.artists[artist_id].nombre = this.nombreActualizar;
+                  this.artists[artist_id].edad = this.edadActualizar;
+              }
+          }
+
+
 }
 </script>
 
