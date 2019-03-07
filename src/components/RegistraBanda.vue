@@ -22,6 +22,30 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-6">
+            <h4 class="textOrange">Ciudad de Origen</h4>
+          </div>
+          <div class="col-6">
+            <input type="text" name="city" v-model="input.city" value="" placeholder="Escribe aqui">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="textOrange">Imagen</h4>
+          </div>
+          <div class="col-6">
+            <input type="text" name="city" v-model="input.photo" value="" placeholder="Pon un link a tu imagen en URL">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="textOrange">Descripción</h4>
+          </div>
+          <div class="col-6">
+            <input type="text" name="city" v-model="input.description" value="" placeholder="Pequeña Bio de la Banda">
+          </div>
+        </div>
+        <div class="row">
           <div class="col-12 col-md-6">
             <h4 class="textOrange">Género</h4>
             <span class="extra">Selecciona los que identifiquen a tu banda</span>
@@ -118,10 +142,10 @@
           <div class="col-6">
             <select class="form-control mb-1" name="costPerConcert" v-model="input.costPerConcert">
               <option>Seleccionar</option>
-              <option>Menoos de 12</option>
-              <option>De 12 a 20</option>
-              <option>De 20 a 25</option>
-              <option>Más de 25</option>
+              <option>Menos de 12000</option>
+              <option>De 12000 a 20000</option>
+              <option>De 20000 a 25000</option>
+              <option>Más de 25000</option>
             </select>
           </div>
         </div>
@@ -226,7 +250,8 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <h4 class="textOrange">Link de Fan Page</h4>
+            <!-- link de spotify -->
+            <h4 class="textOrange">Link de Fan Page de Facebook</h4>
           </div>
           <div class="col-6">
             <input type="text" name="fanpage" v-model="input.fanpage" value="" placeholder="Escribe aquí">
@@ -322,7 +347,7 @@
           bandName: this.input.name,
           email: this.input.email,
           shandraw: this.shandraw.join(","),
-          photo: "https://static.wixstatic.com/media/bbcdc0_359f54dc7f8f4f0b8337b59b1ca88614~mv2.png/v1/fill/w_280,h_280,al_c,usm_0.66_1.00_0.01/Perfil-%20PIM%2001.png",
+          photo: this.input.photo,
           trayectory: parseFloat(this.input.trayectoria),
           costPerPresentation: parseFloat(this.input.costPerConcert),
           internationalConcerts: parseFloat(this.input.cuantos),
@@ -332,6 +357,8 @@
           liveVideo: this.input.videoVivo,
           studioVideo: this.input.videoclip,
           pressKit: this.input.fanpage,
+          city: this.input.city,
+          description: this.input.description, 
           numOfMemebers: parseInt(this.input.integrantes),
           places: this.input.paises,
           facebookFollowers: parseInt(this.input.facebook),
