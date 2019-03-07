@@ -42,7 +42,7 @@ export class ApiService {
         return ({
             id: '-1',
             code: 'UnknownError',
-            message: error.data
+            message: error
         });
     }
 

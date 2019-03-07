@@ -15,10 +15,10 @@
       </div>
       <div class="row">
         <div class="col-md-4 col-sm-12">
-          <img class="rounded-circle img-fluid" src="../assets/images/plo.jpg" alt="">
+          <img class="rounded-circle img-fluid" v-bind:src='image' alt="">
         </div>
         <div class="col-md-8 col-sm-12">
-          <h4 class="artistInfo text-left"> MX Jalapa, Veracruz</h4>
+          <h4 class="artistInfo text-left"> {{city}}}</h4>
           <h4 class="artistInfo text-left"> {{paises}}</h4>
         </div>
       </div>
@@ -137,7 +137,10 @@
         comentarios:65,
         seguidores:0,
         porcentajeNivel:57,
-        paises: 0
+        paises: 0,
+        image: '',
+        city: ''
+
       }
     },
     beforeRouteEnter(to, from, next) {
@@ -156,8 +159,10 @@
     methods: {
       setData(respuesta) {
         console.log("Artist", respuesta);
+        this.city = respuesta.data.city;
         this.artista = respuesta.data.bandName;
-        this.descripcion = `${respuesta.data.bandName} are an innovative Mexican duo who combine different musical elements to achieve an experience in the spectator.`;
+        this.image = respuesta.data.photo;
+        this.descripcion = respuesta.data.description;
         this.numConciertos = respuesta.data.concertsPerYear;
         this.numCiudades = respuesta.data.places.split(",").length;
         this.numPresentaciones = respuesta.data.internationalConcerts;
