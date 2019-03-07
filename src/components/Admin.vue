@@ -11,13 +11,14 @@
           </section>
           <!-- Tabla donde se muestran los datos -->
           <section class="data">
-              <caption>artists</caption>
+              <caption>Artistas</caption>
               <table class="table">
                   <thead>
                       <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Edad</th>
+                          <th scope="col">Nombre banda</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Level</th>
                           <th></th>
                       </tr>
                   </thead>
@@ -25,37 +26,43 @@
                       <tr v-for="(artist, index) in artists">
                           <td>{{ artist.id }}</td>
                           <td>
-                              <span v-if="formActualizar && idActualizar == index">
-                                  <!-- Formulario para actualizar -->
+                              <!-- <span v-if="formActualizar && idActualizar == index">
                                   <input v-model="nombreActualizar" type="text" class="form-control">
-                              </span>
-                              <span v-else>
+                              </span> -->
+                              <span>
                                   <!-- Dato nombre -->
                                   {{ artist.nombre }}
                               </span>
                           </td>
                           <td>
-                              <span v-if="formActualizar && idActualizar == index">
-                                  <!-- Formulario para actualizar -->
+                              <!-- <span v-if="formActualizar && idActualizar == index">
                                   <input v-model="edadActualizar" type="text" class="form-control">
-                              </span>
-                              <span v-else>
+                              </span> -->
+                              <span>
                                   <!-- Dato edad -->
                                   {{ artist.edad }}
                               </span>
                           </td>
                           <td>
                               <!-- Botón para guardar la información actualizada -->
-                              <span v-if="formActualizar && idActualizar == index">
+                              <!-- <span v-if="formActualizar && idActualizar == index">
                                   <button @click="guardarActualizacion(index)" class="btn btn-success">Guardar</button>
-                              </span>
-                              <span v-else>
+                              </span> -->
+                              <span>
                                   <!-- Botón para mostrar el formulario de actualizar -->
-                                  <button @click="modalShow = !modalShow" class="btn btn-warning">Actualizar</button>
+                                  <button @click="modalShow = !modalShow; verFormActualizar(index)" class="btn btn-warning">Actualizar</button>
                                   <!-- Update Modal -->
                                   <b-modal v-model="modalShow">Hello From Modal!
                                     <div class="artistData">
-                                      
+                                      <label>ID</label>
+                                      <span>{{ idActualizar }}</span><br>
+
+                                      <label>{{ nombreActualizar }}</label>
+                                      <input v-model="nombreActualizar" type="text" class="form-control">
+
+                                      <label>{{ nombreActualizar }}</label>
+                                      <input v-model="nombreActualizar" type="text" class="form-control">
+
                                     </div>
                                   </b-modal>
                                   <!-- <button @click="verFormActualizar(index)" class="btn btn-warning">Actualizar</button> -->
@@ -72,57 +79,55 @@
 
 <script>
 export default {
-          data(){
-            return{
-              // Input nombre
-              nombre: '',
-              // Input edad
-              edad: '',
-              // Ver o no ver el formulario de actualizar
-              formActualizar: false,
-              // La posición de tu lista donde te gustaría actualizar
-              idActualizar: -1,
-              // Input nombre dentro del formulario de actualizar
-              nombreActualizar: '',
-              // Input edad dentro del formulario de actualizar
-              edadActualizar: '',
-              // Lista de artists
-              artists: [],
-              modalShow: false
-            }
-          },
-          methods: {
-              crearartist: function () {
-                  // Anyadimos a nuestra lista
-                  this.artists.push({
-                      id: + new Date(),
-                      nombre: this.nombre,
-                      edad: this.edad
-                  });
-                  // Vaciamos el formulario de añadir
-                  this.nombre = '';
-                  this.edad = '';
-              },
-              verFormActualizar: function (artist_id) {
-                  // Antes de mostrar el formulario de actualizar, rellenamos sus campos
-                  this.idActualizar = artist_id;
-                  this.nombreActualizar = this.artists[artist_id].nombre;
-                  this.edadActualizar = this.artists[artist_id].edad;
-                  // Mostramos el formulario
-                  this.formActualizar = true;
-              },
-              borrarartist: function (artist_id) {
-                  // Borramos de la lista
-                  this.artists.splice(artist_id, 1);
-              },
-              guardarActualizacion: function (artist_id) {
-                  // Ocultamos nuestro formulario de actualizar
-                  this.formActualizar = false;
-                  // Actualizamos los datos
-                  this.artists[artist_id].nombre = this.nombreActualizar;
-                  this.artists[artist_id].edad = this.edadActualizar;
-              }
-          }
+    data(){
+      return{
+        nombre: '',
+        edad: '',
+        // Ver o no ver el formulario de actualizar
+        formActualizar: false,
+        // La posición de tu lista donde te gustaría actualizar
+        idActualizar: -1,
+        // Input nombre dentro del formulario de actualizar
+        nombreActualizar: '',
+        // Input edad dentro del formulario de actualizar
+        edadActualizar: '',
+        // Lista de artists
+        artists: [],
+        modalShow: false
+      }
+    },
+    methods: {
+        crearartist: function () {
+            // Anyadimos a nuestra lista
+            this.artists.push({
+                id: + new Date(),
+                nombre: this.nombre,
+                edad: this.edad
+            });
+            // Vaciamos el formulario de añadir
+            this.nombre = '';
+            this.edad = '';
+        },
+        verFormActualizar: function (artist_id) {
+            // Antes de mostrar el formulario de actualizar, rellenamos sus campos
+            this.idActualizar = artist_id;
+            this.nombreActualizar = this.artists[artist_id].nombre;
+            this.edadActualizar = this.artists[artist_id].edad;
+            // Mostramos el formulario
+            this.formActualizar = true;
+        },
+        borrarartist: function (artist_id) {
+            // Borramos de la lista
+            this.artists.splice(artist_id, 1);
+        },
+        guardarActualizacion: function (artist_id) {
+            // Ocultamos nuestro formulario de actualizar
+            this.formActualizar = false;
+            // Actualizamos los datos
+            this.artists[artist_id].nombre = this.nombreActualizar;
+            this.artists[artist_id].edad = this.edadActualizar;
+        }
+    }
 
 
 }
