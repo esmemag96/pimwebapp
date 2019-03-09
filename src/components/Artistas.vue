@@ -48,10 +48,25 @@
         </div>
       </div>
     </div>
+    <div class="col-3 mediaPlayer">
+      <span class="mediaTitle">MEDIA <i class="fas fa-play"></i></span>
+      <audio controls>
+        <source src="../assets/song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="../assets/song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="../assets/song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+    </div>
     <div class="cotizacionWrapper">
-      <div class="col-3 mediaPlayer">
+      <!-- <div class="col-3 mediaPlayer">
         <img class="" src="../assets/images/media2.png" alt=""><br>
-      </div>
+      </div> -->
       <div class="col-9 cotizacionContainer">
         <h3 class="row">Cotización y trayectoria artística</h3>
         <div class="row text-center attributesContainer">
@@ -139,8 +154,7 @@
         porcentajeNivel:57,
         paises: 0,
         image: '',
-        city: ''
-
+        city: '',
       }
     },
     beforeRouteEnter(to, from, next) {
@@ -262,10 +276,24 @@
     background-color: #510a32;
     height: 800px;
   }
+  .mediaTitle{
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 12px;
+  }
   .mediaPlayer img{
     width: 85%;
     margin-left: 6.5em;
     margin-top: -10em;
+  }
+  .mediaPlayer{
+    background-color: #ee433e;
+    height: auto;
+    margin-left: 6.5em;
+    margin-top: -10em;
+    border-radius: 19px;
+    color: white;
+    padding: 18px;
   }
   .cotizacionContainer{
     color: white;
@@ -305,14 +333,14 @@
     margin-right: 1em;
   }
   .progress{
-    width: 28em;
-    border-radius: 24px;
-    background-color: #ff2b32;
-    border: white 2px solid;
-    height: 3em;
+    width: 28em !important;
+    border-radius: 24px !important;
+    background-color: #ff2b32 !important;
+    border: white 2px solid !important;
+    height: 3em !important;
   }
   .progress-bar{
-    background-color: #580030;
+    background-color: #580030 !important;
   }
   .socialContainer{
     padding-top: 5em;

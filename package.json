@@ -14,6 +14,7 @@
     "moment": "^2.24.0",
     "uuid": "^3.3.2",
     "vue": "^2.6.7",
+    "vue-audio": "0.0.12",
     "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.0.2"
   },
