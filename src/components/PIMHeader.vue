@@ -1,16 +1,13 @@
 <template lang="html">
 <section id="header">
   <header class="encabezado" role="banner" id="encabezado">
-    <div class="container ">
-      <div class="logo">
-        <router-link :to="{ name: 'home', params: {} }" class="">
-          <img class="logoimg" src="../assets/images/pimm.png" alt="Logo del sitio">
-        </router-link>
-      </div>
-        <button type="button" class="boton-menu hidden-md-up" data-toggle="collapse" data-target="#menu-principal" aria-expanded="false">
-          <i class="fa fa-bars" aria-hidden="true"></i>
-        </button>
-        <nav id="menu-principal" class="collapse">
+    <div class="container">
+        <div class="logo">
+          <router-link :to="{ name: 'home', params: {} }" class="">
+            <img class="logoimg" src="../assets/images/pimm.png" alt="Logo del sitio">
+          </router-link>
+        </div>
+        <nav id="menu-principal" class="d-none d-lg-block">
           <ul class="row">
             <li class="col"> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
             <li class="col" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
@@ -20,6 +17,23 @@
             <li v-if="!authenticated" id="registrobtn" class="col"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
           </ul>
         </nav>
+        <b-button v-b-toggle.collapse1 variant="" class="buttonMenu d-sm-block d-lg-none">
+          <i class="fa fa-bars"></i>
+        </b-button>
+        <b-collapse id="collapse1" class="">
+          <b-card class="menuSmall">
+            <nav id="menu-principal" class="">
+              <ul class="row">
+                <li class="col-12"> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
+                <li class="col-12" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
+                <li class="col-12"> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
+                <li v-if="!authenticated" class="nrig col-12"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
+                <li v-if="authenticated" class="nrig col-12"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Logout</router-link></li>
+                <li v-if="!authenticated" id="registrobtn" class="col-12"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
+              </ul>
+            </nav>
+          </b-card>
+        </b-collapse>
       </div>
     </header>
   </section>
@@ -105,65 +119,19 @@ height: auto; }
 }
 #registrobtn a{
   color: #cd3051;
-margin-top: 8px;
+  margin-top: 8px;
+  border-top: none !important;
 }
-.boton-buscar,
-.boton-menu {
-  border: 0;
-  font-size: 2rem;
-  margin: 0;
-  padding: 0 .5rem;
-  background: transparent;
-  color: #fff; }
-
-.boton-buscar:focus,
-.boton-menu:focus {
-  outline: 0; }
-
-.boton-buscar {
-  margin-left: auto;
-  margin-right: .8rem; }
-
-
-/*Estilos bloque buscar*/
-#bloque-buscar {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 100%;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%; }
-
-.contenedor-bloque-buscar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 3rem;
-  margin: 1rem 0; }
-
-.contenedor-bloque-buscar input[type="text"] {
-  border: 0;
-  border-radius: 5px 0 0 5px;
-  padding: 1rem;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto; }
-
-.contenedor-bloque-buscar input[type="submit"] {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  border: 0;
-  border-radius: 0 5px 5px 0;
-  background: #cd3051;
-  color: #fff;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  padding: 0 1rem; }
-
+.menuSmall{
+  background: #2d142c !important;
+  border: none;
+  width: 100%!important;
+}
+.buttonMenu{
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 35px !important;
+}
 #menu-principal {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 100%;
