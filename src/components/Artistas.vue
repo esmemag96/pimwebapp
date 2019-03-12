@@ -3,7 +3,7 @@
     <div class="infoContainer">
       <div class="row">
         <div class="col-md-9 col-sm-12">
-          <h1 class="artistName">{{ artista }}</h1>
+          <h1 class="artistName">{{artista}}</h1>
         </div>
         <div class="col-md-3 col-sm-12">
           <div class="circle text-center">
@@ -139,6 +139,7 @@
         porcentajeNivel:57,
         paises: 0,
         image: '',
+        photoBack: '',
         city: ''
 
       }
@@ -169,6 +170,7 @@
         this.likes = respuesta.data.facebookFollowers;
         this.seguidores = respuesta.data.youtubeMustViewVideo;
         this.paises = respuesta.data.places;
+        this.photoBack = respuesta.data.photoBack;
       }
     }
   }

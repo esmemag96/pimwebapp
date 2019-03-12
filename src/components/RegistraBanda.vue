@@ -31,10 +31,18 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <h4 class="textOrange">Imagen</h4>
+            <h4 class="textOrange">Imagen de Perfil</h4>
           </div>
           <div class="col-6">
             <input type="text" name="city" v-model="input.photo" value="" placeholder="Pon un link a tu imagen en URL">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="textOrange">Imagen de Fondo de Perfil</h4>
+          </div>
+          <div class="col-6">
+            <input type="text" name="city" v-model="input.photoBack" value="" placeholder="Pon un link a tu imagen en URL">
           </div>
         </div>
         <div class="row">
@@ -332,7 +340,9 @@
           videoclip: "",
           videoVivo: "",
           streaming: "",
-          streamingCual: ""
+          streamingCual: "",
+          photoBack: "",
+          photo: ""
         }
       }
     },
@@ -348,6 +358,7 @@
           email: this.input.email,
           shandraw: this.shandraw.join(","),
           photo: this.input.photo,
+          photoBack: this.input.photoBack,
           trayectory: parseFloat(this.input.trayectoria),
           costPerPresentation: parseFloat(this.input.costPerConcert),
           internationalConcerts: parseFloat(this.input.cuantos),
