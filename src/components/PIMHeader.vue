@@ -1,6 +1,6 @@
 <template lang="html">
 <section id="header">
-  <header class="encabezado" role="banner" id="encabezado">
+  <header class="encabezado fixed-top" role="banner" id="encabezado">
     <div class="container">
         <div class="logo">
           <router-link :to="{ name: 'home', params: {} }" class="">

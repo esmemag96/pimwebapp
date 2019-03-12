@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style lang="css">
+.piedepagina{
+  margin-top: 5em;
+}
 </style>

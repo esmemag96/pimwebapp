@@ -19,10 +19,10 @@
           <div class="agencia py-1" id="agencia2">
             <div class="container">
               <div style=" align-items: center;justify-content: center" class="">
-                <p id="margen-top-p"style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Heavy;"class="wow fadeIn">Forma parte de nuestra comunidad<br>completamente <span style="color: #ee4540">GRATIS!</span></p>
+                <p id="margin-top-p"style=""class="wow fadeIn agenciaText">Forma parte de nuestra comunidad<br>completamente <span style="color: #ee4540">GRATIS!</span></p>
               </div>
               <div style="display: flex; align-items: center;justify-content: center" class="">
-                <p style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Light;"class="wow fadeIn">Contamos con el apoyo de <span style="color: #ee4540">más de 500 festivales,</span><br>venues mercados y organizaciones en la industria musical</p>
+                <p class="wow fadeIn agenciaText">Contamos con el apoyo de <span style="color: #ee4540">más de 500 festivales,</span><br>venues mercados y organizaciones en la industria musical</p>
               </div>
               <div style="margin-bottom: 40px;" class="carrouselContainer">
                 <carousel :autoplay="false" :nav="false" :dots="false":number=4 :responsive="{0:{items:1,nav:false}}">
@@ -70,21 +70,18 @@
           </div>
           <div class="mision py-1" id="misionId">
             <div class="container">
-              <div style="display: flex; align-items: center;justify-content: center" class="">
-                <p  style="width: auto;padding-top: 80px;font-size: 23.5px;font-family: Nexa-Heavy"class=" wow fadeIn">Leer nuestra misión </p>
-              </div>
-              <div class="row2">
-                <div class="col-md-4 col-xl-3 ">
+              <div class="row text-center">
+                <div class="col-sm-12 col-md-4 col-xl-3 ">
                   <img class="img-mision wow zoomIn" data-wow-delay=".4s" src="../assets/images/pim_metrics.png" alt="La agencia">
-                  <p class="wow fadeIn" style="font-family: Nexa-Heavy;margin-top: 46px;font-size: 28.5px;color: #2d142c;text-align: center">Conoce tu nivel<br>en la industria<br>musical</p>
+                  <p class="wow fadeIn misionText responsiveText">Conoce tu nivel<br>en la industria<br>musical</p>
                 </div>
-                <div class="col-md-4 col-xl-3 ">
+                <div class="col-sm-12 col-md-4 col-xl-3 ">
                   <img class="img-mision wow zoomIn" data-wow-delay=".4s" src="../assets/images/pim_goals.png" alt="La agencia">
-                  <p class="wow fadeIn" style="font-family: Nexa-Heavy;margin-top: 46px;font-size: 28.5px;color:#2d142c;text-align: center">Obten un<br>plan de trabajo gratuito</p>
+                  <p class="wow fadeIn misionText">Obten un<br>plan de trabajo gratuito</p>
                 </div>
-                <div class="col-md-4 col-xl-3 ">
+                <div class="col-sm-12 col-md-4 col-xl-3 ">
                   <img class="img-mision wow zoomIn" data-wow-delay=".4s" src="../assets/images/pim_connect.png" alt="La agencia">
-                  <p class="wow fadeIn" style="font-family: Nexa-Heavy;margin-top: 46px;font-size: 28.5px;color:#2d142c;text-align: center;white-space: nowrap;">Contacta con<br>festivales y eventos<br>a nivel nacional<br>e internacional</p>
+                  <p class="wow fadeIn misionText">Contacta con<br>festivales y eventos<br>a nivel nacional<br>e internacional</p>
                 </div>
               </div>
             </div>
@@ -133,6 +130,13 @@ li a
 .logoimg{
   width: 15%;
 }
+.misionText{
+  font-family: Nexa-Heavy;
+  margin-top: 46px;
+  font-size: 28.5px;
+  color: #2d142c;
+  text-align: center
+}
 .agencia,.trabaja,.mision
 {
 
@@ -175,15 +179,12 @@ p#margen-top-p{
   font-family: Nexa-Regular;
   margin-bottom: 50px;
 }
-@media (max-width: 500px){
-.agencia
-{
-    background: #cd3051;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    display: none
-    }}
+.agenciaText{
+  width: auto;
+  text-align: center;
+  font-size: 28.5px;
+  font-family: Nexa-Heavy;
+}
 #menu-principal ul li#registrobtn {
     border: #cd3051;
     border-style: solid;
@@ -217,7 +218,7 @@ p#margen-top-p{
 }
 .img-mision
 {
-    width: 200;
+    width: 200px;
     height: 200px;
     margin: auto;
 }
@@ -229,7 +230,7 @@ p#margen-top-p{
 }
 .img-carousel
 {
-    width: 231px !important;
+    width: 200px !important;
     margin-left:0 !important;
     margin-right:0 !important;
 }
@@ -243,13 +244,6 @@ p#margen-top-p{
     margin-left: 20px;
     justify-content: center;
     padding-top: 120px;
-}
-@media(max-width:450px)
-{
-    .mision
-    {
-        display: none;
-    }
 }
 /*********************/
 
@@ -457,10 +451,6 @@ SECCION AGENCIA
   background: #cd3051;
   color: #fff; }
 
-.agencia img {
-  width: 80%;
-  margin: 0 auto;
-  display: block; }
 
 /*----------------------------
 SECCION TU MEJOR ELECCI├ôN
@@ -685,6 +675,40 @@ ESTILOS PAGINA SERVICIOS
 /*---------------------------------------------
 EMPIEZAN LAS MEDIAS QUERIES
 --------------------------------------------*/
+
+
+@media (max-width: 500px){
+  .agencia{
+    background: #cd3051;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  .img-carousel {
+      width: 155px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+  }
+  .img-mision {
+    width: 135px;
+    height: 135px;
+    margin: auto;
+  }
+  .misionText {
+    font-size: 20px;
+    margin-top: 18px;
+  }
+  .responsiveText{
+    color: white;
+  }
+  .listaH li {
+    font-size: 22px;
+  }
+  .agenciaText{
+    font-size: 20px;
+  }
+}
+
 @media (min-width: 868px) {
   #menu-principal {
     height: auto !important;
