@@ -30,10 +30,10 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <span class="textOrange">Pais y Ciudad</span>
+          <span class="textOrange">País y Ciudad</span>
         </div>
         <div class="col-6">
-          <input type="text" name="pais" v-model="input.pais" value="" placeholder="    Pais">
+          <input type="text" name="pais" v-model="input.pais" value="" placeholder="    País">
         </div>
       </div>
       <div class="row">
