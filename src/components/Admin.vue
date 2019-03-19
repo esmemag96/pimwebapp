@@ -1,14 +1,5 @@
 <template lang="html">
   <div id="admin" class="container">
-    <!-- Formulario para añadir artists -->
-    <section class="form">
-      <form action="" class="text-center">
-        <input v-model="nombre" @keyup.enter="crearartist" type="text" class="form-control" placeholder="Nombre">
-        <input v-model="edad" @keyup.enter="crearartist" type="number" name="edad" placeholder="Edad" class="form-control">
-        <!-- Botón para añadir -->
-        <input @click="crearartist" type="button" value="Añadir" class="btn btn-success">
-      </form>
-    </section>
     <!-- Tabla donde se muestran los datos -->
     <section class="data">
       <caption>Artistas</caption>
@@ -24,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(artist, index) in artists">
+          <tr v-for="(artist, index) in artists" :key="artist.uuid">
             <td>{{ index }}</td>
             <td>{{ artist.uuid }}</td>
             <td>
@@ -60,20 +51,17 @@
           <input v-model="nameUpdate" type="text" class="form-control">
           <label>Email</label>
           <input v-model="mailUpdate" type="text" class="form-control">
-          <label> Completeness</label>
-          <input v-model="completenessUpdate" type="text" class="form-control">
           <label> Conciertos por año</label>
           <input v-model="concertsUpdate" type="text" class="form-control">
           <label> Costo por presentación</label>
           <input v-model="costPerPresentationUpdate" type="text" class="form-control">
-          <label> Fecha creado</label>
-          <input v-model="dateCreated" type="text" class="form-control">
-          <label> Fecha editado</label>
-          <input v-model="dateModified" type="text" class="form-control">
           <label> Facebook followers</label>
           <input v-model="facebookFollowersUpdate" type="text" class="form-control">
           <label>Tiene spotify</label>
-          <input v-model="hasSpotify" type="text" class="form-control">
+          <select class="form-control mb-1" name="youtube" v-model="hasSpotify">
+            <option value="true">Si</option>
+            <option value="false">No</option>
+          </select>
           <label> Conciertos Internacionales</label>
           <input v-model="internationalConcertsUpdate" type="text" class="form-control">
           <input v-model="concertPlaces" type="text" class="form-control">
@@ -85,22 +73,31 @@
           <input v-model="shandraw" type="text" class="form-control">
           <label>Social Media Follow Up</label>
           <input v-model="socialMediaFollowUpUpdate" type="text" class="form-control">
+          <label>Trayectory</label>
+          <input v-model="trayectoryUpdate" type="text" class="form-control">
+          <label>Studio Video</label>
+          <input v-model="studioVideoUpdate" type="text" class="form-control">
+          <label>Youtube Video</label>
+          <input v-model="youtubeVideoUpdate" type="text" class="form-control">
+          <hr>
+          <h4>Administrador</h4>
           <label>Status</label>
-          <input v-model="statusUpdate" type="text" class="form-control">
+          <select class="form-control mb-1" name="youtube" v-model="statusUpdate">
+            <option value="true">Activo</option>
+            <option value="false">Desactivado</option>
+          </select>
+          <label> Completeness</label>
+          <input v-model="completenessUpdate" type="text" class="form-control">
+          <label>Level</label>
+          <input v-model="levelUpdate" type="text" class="form-control">
+          <label>Sublevel</label>
+          <input v-model="sublevelUpdate" type="text" class="form-control">
           <label>Step 1</label>
           <input v-model="step1Update" type="text" class="form-control">
           <label>Step 2</label>
           <input v-model="step2Update" type="text" class="form-control">
           <label>Step 3</label>
-          <input v-model="step3Update" type="text" class="form-control">
-          <label>Studio Video</label>
-          <input v-model="studioVideoUpdate" type="text" class="form-control">
-          <label>Sublevel</label>
-          <input v-model="sublevelUpdate" type="text" class="form-control">
-          <label>Trayectory</label>
-          <input v-model="trayectoryUpdate" type="text" class="form-control">
-          <label>Youtube Video</label>
-          <input v-model="youtubeVideoUpdate" type="text" class="form-control">
+          <input v-model="step3Update" type="text" class="form-control" v-bind:style="{marginBottom: '10px'}">
         </div>
       </b-modal>
     </section>
@@ -137,6 +134,7 @@ export default {
       step2Update:'',
       step3Update:'',
       studioVideoUpdate:'',
+      levelUpdate:'',
       sublevelUpdate:'',
       trayectoryUpdate:'',
       youtubeVideoUpdate:'',
@@ -192,6 +190,7 @@ export default {
       this.step2Update=this.artists[artist_id].step2;
       this.step3Update=this.artists[artist_id].step3;
       this.studioVideoUpdate=this.artists[artist_id].studioVideo;
+      this.levelUpdate=this.artists[artist_id].level;
       this.sublevelUpdate=this.artists[artist_id].sublevel;
       this.trayectoryUpdate=this.artists[artist_id].trayectory;
       this.youtubeVideoUpdate=this.artists[artist_id].youtubeMustViewVideo;

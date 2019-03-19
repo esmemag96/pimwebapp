@@ -110,9 +110,9 @@ export class OAuth2 {
     }
 
     async getToken() {
+        const parent = this;
         return new Promise(function(resolve, reject) {
             try {
-                const parent = this;
                 const access_token = localStorage.getItem('access_token');
                 const profile = localStorage.getItem('profile');
                 const refresh_token = localStorage.getItem('refresh_token');
