@@ -5,6 +5,8 @@ import Conectate from './components/Conectate.vue'
 import Registrate from './components/Registrate.vue'
 import RegistraBanda from './components/RegistraBanda.vue'
 import Admin from './components/Admin.vue'
+import LoginAdmin from './components/LoginAdmin.vue'
+
 
 const routes = [
   {path: '/', component:Home, name:'home'},
@@ -14,6 +16,7 @@ const routes = [
   {path: '/registrate', component:Registrate, name:'registrate' , props: true},
   {path: '/registraBanda', component:RegistraBanda, name:'registraBanda' , props: true},
   {path: '/admin', component:Admin, name:'admin' , props: true},
+  {path: '/loginAdmin', component:LoginAdmin, name:'LoginAdmin' , props: true},
 ]
 
 export default routes
