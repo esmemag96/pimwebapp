@@ -17,6 +17,6 @@ export default {
 
 <style lang="css">
 .piedepagina{
-  margin-top: 5em;
+  padding-top: 5em;
 }
 </style>

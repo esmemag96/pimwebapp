@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style lang="css">
+#header{
+  padding-bottom: 3em;
+}
 .encabezado {
   background: #2d142c;
   color: #fff;

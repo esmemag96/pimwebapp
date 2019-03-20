@@ -50,7 +50,7 @@
             <h4 class="textOrange">Descripción</h4>
           </div>
           <div class="col-6">
-            <input type="text" name="city" v-model="input.description" value="" placeholder="Pequeña Bio de la Banda">
+            <textarea rows="10" cols="60" type="text" name="city" v-model="input.description" value="" placeholder="Pequeña Bio de la Banda"> </textarea>
           </div>
         </div>
         <div class="row">
@@ -61,26 +61,26 @@
           <div class="col-12 col-md-6">
             <div class="row generosContainer">
               <div class="col">
-                <button type="button" name="button" v-on:click="addShandraw('Blues')">Blues</button>
-                <button type="button" name="button" v-on:click="addShandraw('Country')">Country</button>
-                <button type="button" name="button" v-on:click="addShandraw('Pop')">Pop</button>
-                <button type="button" name="button" v-on:click="addShandraw('Rock')">Rock</button>
-                <button type="button" name="button" v-on:click="addShandraw('Metal')">Metal</button>
+                <b-button :pressed.sync="blues" variant="outline-light" name="button" v-on:click="addShandraw('Blues')">Blues</b-button>
+                <b-button :pressed.sync="country" variant="outline-light" name="button" v-on:click="addShandraw('Country')">Country</b-button>
+                <b-button :pressed.sync="pop" variant="outline-light" name="button" v-on:click="addShandraw('Pop')">Pop</b-button>
+                <b-button :pressed.sync="rock" variant="outline-light" name="button" v-on:click="addShandraw('Rock')">Rock</b-button>
+                <b-button :pressed.sync="metal" variant="outline-light" name="button" v-on:click="addShandraw('Metal')">Metal</b-button>
               </div>
             </div>
             <div class="row generosContainer">
               <div class="col">
-                <button type="button" name="button" v-on:click="addShandraw('Rock')">Rock</button>
-                <button type="button" name="button" v-on:click="addShandraw('Pop')">Pop</button>
-                <button type="button" name="button" v-on:click="addShandraw('Alternativo')">Alternativo</button>
-                <button type="button" name="button" v-on:click="addShandraw('Country')">Country</button>
-                <button type="button" name="button" v-on:click="addShandraw('Jazz')">Jazz</button>
-                <button type="button" name="button" v-on:click="addShandraw('Cantautor')">Cantautor/Cantante</button>
-                <button type="button" name="button" v-on:click="addShandraw('Latino')">Latino</button>
-                <button type="button" name="button" v-on:click="addShandraw('World')">World</button>
-                <button type="button" name="button" v-on:click="addShandraw('Afrobeat')">Afrobeat</button>
-                <button type="button" name="button" v-on:click="addShandraw('Hip Hop')">Hip Hop</button>
-                <button type="button" name="button" v-on:click="addShandraw('R & B')">R & B</button>
+                <b-button :pressed.sync="rock" variant="outline-light" name="button" v-on:click="addShandraw('Rock')">Rock</b-button>
+                <b-button :pressed.sync="pop" variant="outline-light" name="button" v-on:click="addShandraw('Pop')">Pop</b-button>
+                <b-button :pressed.sync="alternativo" variant="outline-light" name="button" v-on:click="addShandraw('Alternativo')">Alternativo</b-button>
+                <b-button :pressed.sync="country" variant="outline-light" name="button" v-on:click="addShandraw('Country')">Country</b-button>
+                <b-button :pressed.sync="jazz" variant="outline-light" name="button" v-on:click="addShandraw('Jazz')">Jazz</b-button>
+                <b-button :pressed.sync="cantautor" variant="outline-light" name="button" v-on:click="addShandraw('Cantautor')">Cantautor/Cantante</b-button>
+                <b-button :pressed.sync="latino" variant="outline-light" name="button" v-on:click="addShandraw('Latino')">Latino</b-button>
+                <b-button :pressed.sync="world" variant="outline-light" name="button" v-on:click="addShandraw('World')">World</b-button>
+                <b-button :pressed.sync="afrobeat" variant="outline-light" name="button" v-on:click="addShandraw('Afrobeat')">Afrobeat</b-button>
+                <b-button :pressed.sync="hiphop" variant="outline-light" name="button" v-on:click="addShandraw('Hip Hop')">Hip Hop</b-button>
+                <b-button :pressed.sync="ryb" variant="outline-light" name="button" v-on:click="addShandraw('R & B')">R & B</b-button>
               </div>
             </div>
           </div>
@@ -321,6 +321,19 @@
     data() {
       return {
         shandraw: [],
+        rock:false,
+        pop:false,
+        alternativo:false,
+        blues:false,
+        country:false,
+        metal:false,
+        jazz:false,
+        cantautor:false,
+        latino:false,
+        world:false,
+        ryb:false,
+        afrobeat:false,
+        hiphop:false,
         input: {
           name: "",
           email: this.email,
@@ -342,8 +355,13 @@
           streaming: "",
           streamingCual: "",
           photoBack: "",
-          photo: ""
-        }
+          photo: "",
+        },
+      }
+    },
+    computed: {
+      btnStates() {
+        return this.buttons.map(btn => btn.state)
       }
     },
     methods: {
@@ -369,7 +387,7 @@
           studioVideo: this.input.videoclip,
           pressKit: this.input.fanpage,
           city: this.input.city,
-          description: this.input.description, 
+          description: this.input.description,
           numOfMemebers: parseInt(this.input.integrantes),
           places: this.input.paises,
           facebookFollowers: parseInt(this.input.facebook),
