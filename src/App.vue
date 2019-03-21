@@ -1,51 +1,57 @@
 <template>
-  <div id="app">
-    <PIMHeader :authenticated="authenticated"/>
-    <!-- <div id="content">
-      <router-view></router-view>
-    </div> -->
-     <router-view @authenticated="setAuthenticated" />
-    <PIMFooter/>
-  </div>
+    <div id="app">
+        <PIMHeader :authenticated="authenticated"/>
+        <!-- <div id="content">
+          <router-view></router-view>
+        </div> -->
+        <router-view @authenticated="setAuthenticated" />
+        <PIMFooter/>
+    </div>
 </template>
 <script>
-import PIMHeader from './components/PIMHeader.vue'
-import PIMFooter from './components/PIMFooter.vue'
+    import PIMHeader from './components/PIMHeader.vue'
+    import PIMFooter from './components/PIMFooter.vue'
+    import * as OAuth from './OAuth2';
 
-export default {
-  name: 'app',
-  components: {
-    PIMHeader,
-    PIMFooter,
-  },
-  data() {
-      return {
-          authenticated: false,
-          mockAccount: {
-              email: "sofiaymarcelo@gmail.com",
-              password: "esmerockea"
-          }
-      }
-  },
-  mounted() {
-      if(!this.authenticated) {
-          this.$router.replace({ name: "home" });
-      }
-  },
-  methods: {
-      setAuthenticated(status) {
-          this.authenticated = status;
-      },
-      logout() {
-          this.authenticated = false;
-          this.$router.replace({ name: "home" });
-      }
-  }
-}
+    let oauth = new OAuth.OAuth2();
+
+    export default {
+        name: 'app',
+        components: {
+            PIMHeader,
+            PIMFooter,
+        },
+        data() {
+            oauth.getToken().then((obj) => {
+                this.authenticated = obj.access_token != null;
+            });
+            return{
+                authenticated: false
+            }
+        },
+        mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "home" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                localStorage.removeItem('profile');
+                localStorage.removeItem('expires_in');
+                this.$router.replace({ name: "home" });
+            }
+        }
+    }
 </script>
 
 <style>
-#app {
+    #app {
 
-}
+    }
 </style>

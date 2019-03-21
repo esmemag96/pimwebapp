@@ -18,7 +18,8 @@
           <img class="rounded-circle img-fluid" v-bind:src='image' alt="">
         </div>
         <div class="col-md-8 col-sm-12">
-          <h4 class="artistInfo text-left"> {{city}}}</h4>
+          <h4 class="artistInfo text-left"> {{artista}}</h4>
+          <h4 class="artistInfo text-left"> {{city}}</h4>
           <h4 class="artistInfo text-left"> {{paises}}</h4>
         </div>
       </div>
@@ -52,15 +53,15 @@
       <span class="mediaTitle">MEDIA <i class="fas fa-play"></i></span>
       <audio controls>
         <source src="../assets/song.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+        Your browser does not support the audio element.
       </audio>
       <audio controls>
         <source src="../assets/song.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+        Your browser does not support the audio element.
       </audio>
       <audio controls>
         <source src="../assets/song.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+        Your browser does not support the audio element.
       </audio>
     </div>
     <div class="cotizacionWrapper">
@@ -161,6 +162,29 @@
     },
     beforeRouteEnter(to, from, next) {
       oauth.getToken().then((obj) =>{
+        if(obj.access_token){
+          return apiService.get({
+            url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist/user`,
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': `Bearer ${obj.access_token}`
+            }
+          }).then((respuesta) => {
+            next(vm => {vm.setData(respuesta)})
+          });
+        }else{
+          this.$parent.authenticated = false;
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          localStorage.removeItem('profile');
+          localStorage.removeItem('expires_in');
+          this.$router.replace({ name: "home" });
+        }
+      });
+    },
+    beforeRouteUpdate (to, from, next) {
+      console.log("called");
+      oauth.getToken().then((obj) =>{
         return apiService.get({
           url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist/user`,
           headers: {
@@ -168,7 +192,8 @@
             'Authorization': `Bearer ${obj.access_token}`
           }
         }).then((respuesta) => {
-          next(vm => {vm.setData(respuesta)})
+          this.setData(respuesta);
+          next();
         });
       });
     },

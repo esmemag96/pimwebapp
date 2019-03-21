@@ -46,8 +46,7 @@
     methods: {
       login() {
         if(this.input.email !== "" && this.input.password !== "") {
-
-          oauth.login(this.input.email, this.input.password).then((respuesta) => {
+          oauth.login(this.input.email, this.input.password, true).then((respuesta) => {
             this.$emit("authenticated", true);
             this.$router.replace({ name: "artistas" });
           });
