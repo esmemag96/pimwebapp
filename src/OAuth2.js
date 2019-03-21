@@ -39,7 +39,7 @@ export class OAuth2 {
             .catch(error => error);
     }
 
-    async login(email, password){
+    async login(email, password, admin=false){
 
         const parent = this;
 
@@ -70,32 +70,40 @@ export class OAuth2 {
                 client_secret: parent.clientAuth.clientSecret
             };
 
+            if(admin){
+                body["scope"] = "ADMIN"
+            }
+
             searchParams = Object.keys(body).map((key) => {
                 return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
             }).join('&');
 
-
-            
-
+            let time = moment();
             return parent.apiService.post({
                 url: `https://proindiemusic-oauth.mybluemix.net/oauth2/token`,
                 params: searchParams,
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
-            }).then((respuesta) => {
-                console.log("Login", respuesta);
-                localStorage.setItem('access_token', respuesta.access_token);
-                localStorage.setItem('refresh_token', respuesta.refresh_token);
-                localStorage.setItem('profile', JSON.stringify(respuesta.profile));
-                localStorage.setItem('expires_in', respuesta.expires_in);
+            }).then((res) => {
+                console.log("Login", res);
+                localStorage.setItem('access_token', res.access_token);
+                localStorage.setItem('refresh_token', res.refresh_token);
+                time=time.add(parseInt(res.expires_in,10)-120, "seconds");
+                localStorage.setItem("expires_in",time.format());
+                parent.onCheckRequest(res.access_token).then(function (valid){
+                    console.log("User", valid);
+                    localStorage.setItem("profile", JSON.stringify(valid[1]));
+                });
                 return respuesta;
             });
         });
     }
 
     async onCheckRequest(token) {
-        return await fetch(`${this.clientAuth.oauth2}/oauth2/user`, {
+        let status;
+
+        return await fetch(`${this.clientAuth.oauth2}oauth2/user`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -105,8 +113,13 @@ export class OAuth2 {
                 status = res.status;
                 return res.json();
             })
-            .then(res => [status, res])
-            .catch(error => error);
+            .then(res => {
+                return [status, res]
+            })
+            .catch(error => {
+                console.log("Hubo un error", error);
+                return error;
+            });
     }
 
     async getToken() {
@@ -122,7 +135,8 @@ export class OAuth2 {
                     const time = moment(expires_in);
                     if (time.isAfter(moment())) {
                         return resolve({
-                            access_token
+                            access_token: access_token,
+                            profile: JSON.parse(profile)
                         });
                     }
                 }
@@ -153,31 +167,36 @@ export class OAuth2 {
                                     localStorage.setItem("access_token", valid[1]["access_token"]);
 
                                     return resolve({
-                                        access_token: valid[1]["access_token"]
+                                        access_token: valid[1]["access_token"],
+                                        profile: JSON.parse(profile)
                                     });
                                 } else {
                                     parent.clearToken();
                                     return resolve({
-                                        access_token: null
+                                        access_token: null,
+                                        profile: null
                                     });
                                 }
                             }).catch(() => {
                                 parent.clearToken();
                                 return resolve({
-                                    access_token: null
+                                    access_token: null,
+                                    profile: null
                                 });
                             });
                         }
                     }).catch(() => {
                         parent.clearToken();
                         return resolve({
-                            access_token: null
+                            access_token: null,
+                            profile: null
                         });
                     });
                 } else {
                     parent.clearToken();
                     return resolve({
-                        access_token: null
+                        access_token: null,
+                        profile: null
                     });
                 }
 
@@ -185,7 +204,8 @@ export class OAuth2 {
                 console.log(err);
                 parent.clearToken();
                 return resolve({
-                    access_token: null
+                    access_token: null,
+                    profile: null
                 });
             }
         });

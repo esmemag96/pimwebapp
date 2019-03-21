@@ -22,14 +22,14 @@
         </b-button>
         <b-collapse id="collapse1" class="">
           <b-card class="menuSmall">
-            <nav id="menu-principal" class="">
+            <nav id="menu-principael" class="">
               <ul class="row">
                 <li class="col-12"> <router-link :to="{ name: 'home', params: {} }">Inicio</router-link></li>
                 <li class="col-12" v-if="authenticated"> <router-link :to="{ name: 'artistas', params: {} }">Artistas</router-link></li>
                 <li class="col-12"> <router-link :to="{ name: 'contact', params: {} }">Contacto</router-link></li>
                 <li v-if="!authenticated" class="nrig col-12"> <router-link :to="{ name: 'conectate', params: {} }">Conéctate</router-link></li>
                 <li v-if="authenticated" class="nrig col-12"> <router-link :to="{ name: 'conectate', params: {} }" v-on:click.native="logout()">Logout</router-link></li>
-                <li v-if="!authenticated" id="registrobtn" class="col-12"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
+                <li v-if="!authenticated" id="registrobtns" class="col-12"><router-link :to="{ name: 'registrate', params: {} }">Regístrate</router-link></li>
               </ul>
             </nav>
           </b-card>
@@ -52,6 +52,10 @@ export default {
   methods: {
       logout() {
           this.$parent.authenticated = false;
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          localStorage.removeItem('profile');
+          localStorage.removeItem('expires_in');
           this.$router.replace({ name: "home" });
       }
   }
