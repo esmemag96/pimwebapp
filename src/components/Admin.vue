@@ -43,61 +43,61 @@
         </tbody>
       </table>
       <!-- Update Modal -->
-      <b-modal id="modal-scrollable" scrollable title="Scrollable Content" v-model="modalShow">
+      <b-modal id="modal-scrollable" @ok="handleOk" scrollable title="Scrollable Content" v-model="modalShow">
         <div class="artistData">
           <label>ID</label>
           <span>{{ idActualizar }}</span><br>
           <label> Nombre Banda</label>
-          <input v-model="nameUpdate" type="text" class="form-control">
+          <input v-model="input.bandName" type="text" class="form-control">
           <label>Email</label>
-          <input v-model="mailUpdate" type="text" class="form-control">
+          <input v-model="input.email" type="text" class="form-control">
           <label> Conciertos por año</label>
-          <input v-model="concertsUpdate" type="text" class="form-control">
+          <input v-model="input.concertsPerYear" type="text" class="form-control">
           <label> Costo por presentación</label>
-          <input v-model="costPerPresentationUpdate" type="text" class="form-control">
+          <input v-model="input.costPerPresentation" type="text" class="form-control">
           <label> Facebook followers</label>
-          <input v-model="facebookFollowersUpdate" type="text" class="form-control">
+          <input v-model="input.facebookFollowers" type="text" class="form-control">
           <label>Tiene spotify</label>
-          <select class="form-control mb-1" name="youtube" v-model="hasSpotify">
+          <select class="form-control mb-1" name="youtube" v-model="input.hasSpotify">
             <option value="true">Si</option>
             <option value="false">No</option>
           </select>
           <label> Conciertos Internacionales</label>
-          <input v-model="internationalConcertsUpdate" type="text" class="form-control">
-          <input v-model="concertPlaces" type="text" class="form-control">
+          <input v-model="input.internationalConcerts" type="text" class="form-control">
+          <input v-model="input.places" type="text" class="form-control">
           <label>Presskit</label>
-          <input v-model="presskitUpdate" type="text" class="form-control">
+          <input v-model="input.pressKit" type="text" class="form-control">
           <label> Review </label>
-          <input v-model="reviewUpdate" type="text" class="form-control">
+          <input v-model="input.review" type="text" class="form-control">
           <label> Shandraw</label>
-          <input v-model="shandraw" type="text" class="form-control">
+          <input v-model="input.shandraw" type="text" class="form-control">
           <label>Social Media Follow Up</label>
-          <input v-model="socialMediaFollowUpUpdate" type="text" class="form-control">
+          <input v-model="input.socialMediaFollowUp" type="text" class="form-control">
           <label>Trayectory</label>
-          <input v-model="trayectoryUpdate" type="text" class="form-control">
+          <input v-model="input.trayectory" type="text" class="form-control">
           <label>Studio Video</label>
-          <input v-model="studioVideoUpdate" type="text" class="form-control">
+          <input v-model="input.studioVideo" type="text" class="form-control">
           <label>Youtube Video</label>
-          <input v-model="youtubeVideoUpdate" type="text" class="form-control">
+          <input v-model="input.youtubeMustViewVideo" type="text" class="form-control">
           <hr>
           <h4>Administrador</h4>
           <label>Status</label>
-          <select class="form-control mb-1" name="youtube" v-model="statusUpdate">
+          <select class="form-control mb-1" name="youtube" v-model="input.status">
             <option value="true">Activo</option>
             <option value="false">Desactivado</option>
           </select>
           <label> Completeness</label>
-          <input v-model="completenessUpdate" type="text" class="form-control">
+          <input v-model="input.completeness" type="text" class="form-control">
           <label>Level</label>
-          <input v-model="levelUpdate" type="text" class="form-control">
+          <input v-model="input.level" type="text" class="form-control">
           <label>Sublevel</label>
-          <input v-model="sublevelUpdate" type="text" class="form-control">
+          <input v-model="input.sublevel" type="text" class="form-control">
           <label>Step 1</label>
-          <input v-model="step1Update" type="text" class="form-control">
+          <input v-model="input.step1" type="text" class="form-control">
           <label>Step 2</label>
-          <input v-model="step2Update" type="text" class="form-control">
+          <input v-model="input.step2" type="text" class="form-control">
           <label>Step 3</label>
-          <input v-model="step3Update" type="text" class="form-control" v-bind:style="{marginBottom: '10px'}">
+          <input v-model="input.step3" type="text" class="form-control" v-bind:style="{marginBottom: '10px'}">
         </div>
       </b-modal>
     </section>
@@ -115,92 +115,86 @@ let oauth = new OAuth.OAuth2();
 export default {
   data(){
     return{
-      nombre: '',
-      edad: '',
       formActualizar: false,
       idActualizar: -1,
-      nameUpdate: '',
-      mailUpdate: '',
-      completenessUpdate:'',
-      concertsUpdate:'',
-      costPerPresentationUpdate:'',
-      facebookFollowersUpdate:'',
-      internationalConcertsUpdate:'',
-      presskitUpdate:'',
-      reviewUpdate:'',
-      socialMediaFollowUpUpdate:'',
-      statusUpdate:'',
-      step1Update:'',
-      step2Update:'',
-      step3Update:'',
-      studioVideoUpdate:'',
-      levelUpdate:'',
-      sublevelUpdate:'',
-      trayectoryUpdate:'',
-      youtubeVideoUpdate:'',
-      dateCreated:'',
-      dateModified:'',
-      shandraw:'',
-      hasSpotify:'',
-      concertPlaces:'',
+      input:{
+        nombre: '',
+        uuid: '',
+        edad: '',
+        bandName: '',
+        email: '',
+        completeness: '',
+        concertsPerYear: '',
+        costPerPresentation: '',
+        facebookFollowers: '',
+        internationalConcerts: '',
+        pressKit: '',
+        review: '',
+        socialMediaFollowUp: '',
+        status: '',
+        step1: '',
+        step2: '',
+        step3: '',
+        studioVideo: '',
+        level: '',
+        sublevel: '',
+        trayectory: '',
+        youtubeMustViewVideo: '',
+        dateCreated: '',
+        dateModified: '',
+        shandraw: '',
+        hasSpotify: '',
+        places: '',
+      },
       artists: [],
       modalShow: false
     }
   },
   beforeRouteEnter(to, from, next) {
     oauth.getToken().then((obj) =>{
-      return apiService.get({
-        url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist`,
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${obj.access_token}`
-        }
-      }).then((respuesta) => {
-        next(vm => {vm.setData(respuesta)})
-      });
+      if(obj != null && obj.profile != null && obj.profile.authentication.authorities.toString().includes("ADMIN")) {
+        return apiService.get({
+          url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist`,
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${obj.access_token}`
+          }
+        }).then((respuesta) => {
+          next(vm => {
+            vm.setData(respuesta)
+          })
+        });
+      }else{
+        next(vm => {
+          vm.$router.replace({ name: "LoginAdmin" });
+        })
+      }
     });
   },
   methods: {
-    crearartist: function () {
-      // Anyadimos a nuestra lista
-      this.artists.push({
-        uuid: + new Date(),
-        bandName: this.nombre,
-        email: this.edad
-      });
-      // Vaciamos el formulario de añadir
-      this.nombre = '';
-      this.edad = '';
-    },
     verFormActualizar: function (artist_id) {
       // Antes de mostrar el formulario de actualizar, rellenamos sus campos
       this.idActualizar = artist_id;
-      this.nameUpdate = this.artists[artist_id].bandName;
-      this.mailUpdate = this.artists[artist_id].email;
-      this.completenessUpdate=this.artists[artist_id].completeness;
-      this.concertsUpdate=this.artists[artist_id].concertsPerYear;
-      this.costPerPresentationUpdate=this.artists[artist_id].costPerPresentation;
-      this.facebookFollowersUpdate=this.artists[artist_id].facebookFollowers;
-      this.internationalConcertsUpdate=this.artists[artist_id].internationalConcerts;
-      this.presskitUpdate=this.artists[artist_id].pressKit;
-      this.reviewUpdate=this.artists[artist_id].review;
-      this.socialMediaFollowUpUpdate=this.artists[artist_id].socialMediaFollowUp;
-      this.statusUpdate=this.artists[artist_id].status;
-      this.step1Update=this.artists[artist_id].step1;
-      this.step2Update=this.artists[artist_id].step2;
-      this.step3Update=this.artists[artist_id].step3;
-      this.studioVideoUpdate=this.artists[artist_id].studioVideo;
-      this.levelUpdate=this.artists[artist_id].level;
-      this.sublevelUpdate=this.artists[artist_id].sublevel;
-      this.trayectoryUpdate=this.artists[artist_id].trayectory;
-      this.youtubeVideoUpdate=this.artists[artist_id].youtubeMustViewVideo;
-      this.dateCreated=this.artists[artist_id].dateCreated;
-      this.dateModified=this.artists[artist_id].dateModified;
-      this.shandraw=this.artists[artist_id].shandraw;
-      this.hasSpotify=this.artists[artist_id].hasSpotify;
-      this.concertPlaces=this.artists[artist_id].places;
-
+      this.input = this.artists[artist_id];
       this.formActualizar = true;
+    },
+    handleOk(evt) {
+      // Prevent modal from closing
+      evt.preventDefault();
+      oauth.getToken().then((obj) =>{
+        this.artists[this.idActualizar] = this.input;
+        console.log(JSON.stringify(this.input));
+        return apiService.put({
+          url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist`,
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${obj.access_token}`
+          },
+          data: this.input
+        }).then((respuesta) => {
+          console.log("Salve",respuesta);
+        });
+      });
     },
     borrarartist: function (index, uuid) {
       oauth.getToken().then((obj) =>{
@@ -215,7 +209,6 @@ export default {
           console.log("Borre",respuesta)
         });
       });
-
     },
     setData(respuesta) {
       console.log("Artist", respuesta);
@@ -225,8 +218,8 @@ export default {
     //   // Ocultamos nuestro formulario de actualizar
     //   this.formActualizar = false;
     //   // Actualizamos los datos
-    //   this.artists[artist_id].bandName = this.nameUpdate;
-    //   this.artists[artist_id].email = this.mailUpdate;
+    //   this.artists[artist_id].bandName = this.bandName;
+    //   this.artists[artist_id].email = this.email;
     //
     // },
   }

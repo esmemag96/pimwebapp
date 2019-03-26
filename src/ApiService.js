@@ -17,7 +17,21 @@ export class ApiService {
         }).then((response) => {
             return response.data;
         }).catch((err) => {
-            console.log(err);
+            console.log("Error", options, err);
+            return (this.normalizeError(err));
+        });
+    }
+    // I perform a PUT request with the given options.
+    async put(options) {
+        return await this.axiosClient.request({
+            method: 'put',
+            url: options.url,
+            data: options.params,
+            headers: Object.assign({}, this.axiosClient.headers, options.headers)
+        }).then((response) => {
+            return response.data;
+        }).catch((err) => {
+            console.log("Error", options, err);
             return (this.normalizeError(err));
         });
     }
@@ -31,7 +45,7 @@ export class ApiService {
         }).then((response) => {
             return response.data;
         }).catch((err) => {
-            console.log(err);
+            console.log("Error", options, err);
             return (this.normalizeError(err));
         });
     }
