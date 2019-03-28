@@ -16,6 +16,7 @@
     "vue": "^2.6.7",
     "vue-audio": "0.0.12",
     "vue-owl-carousel": "^2.0.3",
+    "vue-password": "^1.2.0",
     "vue-router": "^3.0.2"
   },
   "devDependencies": {

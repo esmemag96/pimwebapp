@@ -49,7 +49,9 @@
           <span class="textOrange">Contraseña</span>
         </div>
         <div class="col-6">
-          <input type="password" name="password" v-model="input.password" value="" placeholder="   **********"><br>
+          <vue-password name="password" v-model="input.password" classes="input":user-inputs="[input.email]"></vue-password>
+
+          <!-- <input type="password" name="password" v-model="input.password" value="" placeholder="   **********"><br> -->
         </div>
       </div>
       <div class="row">
@@ -57,6 +59,7 @@
           <span class="textOrange">Confirmar contraseña</span>
         </div>
         <div class="col-6">
+          <!-- <vue-password name="passwordConfirmation" v-model="input.passwordConfirmation" classes="input":user-inputs="[input.email]"></vue-password> -->
           <input type="password" name="passwordConfirmation" v-model="input.passwordConfirmation" value="" placeholder="   **********"><br>
         </div>
       </div>
@@ -69,6 +72,11 @@
           <button type="button" name="button" class="registrateButton">Conéctate</button>
         </router-link>
       </div>
+
+    </div>
+    <div>
+      <!-- <b-button @click="modalShow = !modalShow">Open Modal</b-button> -->
+      <b-modal v-model="modalShow">Tu contraseña no es suficientemente segura</b-modal>
     </div>
   </section>
 </template>
@@ -78,13 +86,16 @@
 
   import * as ApiService from '../ApiService';
   import * as OAuth from '../OAuth2';
+  import VuePassword from 'vue-password'
 
   let apiService = new ApiService.ApiService();
   let oauth = new OAuth.OAuth2();
 
   export default {
+    components: { VuePassword },
     data() {
       return {
+        modalShow: false,
         input: {
           email: "",
           password: "",
@@ -221,6 +232,35 @@
   border-radius: 25px;
   border: 3px solid #ee4540;
 }
+.VuePassword__Meter {
+    color: rgb(175, 175, 175);
+    display: block;
+    height: .5rem;
+    margin-top: 0.5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    width: 70%;
+    margin-left: -9em;
+}
+.VuePassword__Toggle__Icon {
+    fill: currentColor;
+    height: 100%;
+    width: 1.5em;
+    margin-right: 19.5em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.VuePassword__Message {
+    cursor: default;
+    font-size: 1rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    text-align: right;
+    text-transform: uppercase;
+    margin-right: 16em;
+}
 @media only screen and (max-width: 768px) {
   .imageregister h1 {
     font-size: 40px;
@@ -252,6 +292,19 @@
     border-radius: 25px;
     border: 3px solid #ee4540;
     margin-left: 0;
+  }
+  .VuePassword__Toggle__Icon {
+    display: none;
+  }
+  .VuePassword__Meter {
+      color: rgb(175, 175, 175);
+      display: block;
+      height: .5rem;
+      margin-top: 0.5rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+      width: 100%;
+      margin-left: -1em;
   }
 }
 </style>

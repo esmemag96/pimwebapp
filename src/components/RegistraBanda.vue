@@ -177,14 +177,14 @@
           </div>
           <div class="col-6">
             <select class="form-control mb-1" name="internacional" v-model="input.internacional">
-              <option>Sí</option>
-              <option selected>No</option>
+              <option value="si">Sí</option>
+              <option value="no" selected>No</option>
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="input.internacional=='si'">
           <div class="col-6">
-            <h4 class="textOrange">¿Sí? ¿Cuántos?</h4>
+            <h4 class="textOrange">¿Cuántos?</h4>
           </div>
           <div class="col-6">
             <select class="form-control mb-1" name="cuantos" v-model="input.cuantos">
@@ -192,11 +192,10 @@
               <option>De 1 a 10</option>
               <option>10 a 20</option>
               <option>Más de 20</option>
-
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="input.internacional=='si'">
           <div class="col-6">
             <h4 class="textOrange">¿En cuáles países?</h4>
           </div>
@@ -287,14 +286,14 @@
           </div>
           <div class="col-6">
             <select class="form-control mb-1" name="streaming" v-model="input.streaming">
-              <option>Sí</option>
-              <option>No</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="input.streaming=='si'">
           <div class="col-6">
-            <h4 class="textOrange">¿Si? ¿Cuál?</h4>
+            <h4 class="textOrange">¿Cuál?</h4>
           </div>
           <div class="col-6">
             <input type="email" name="streamingCual" v-model="input.streamingCual" value="" placeholder="Escribe aquí">
@@ -304,6 +303,10 @@
     </div>
     <div class="row">
       <button type="button" name="button" class="registroButton" v-on:click="register()">Registrar</button>
+    </div>
+    <div>
+      <!-- <b-button @click="modalShow = !modalShow">Open Modal</b-button> -->
+      <b-modal v-model="modalShow">Por favor completa todos los campos</b-modal>
     </div>
   </section>
 </template>
@@ -320,6 +323,7 @@
     props: ["email", "password"],
     data() {
       return {
+        modalShow: false,
         shandraw: [],
         rock:false,
         pop:false,
