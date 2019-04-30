@@ -100,6 +100,7 @@
 }
 #login{
   font-family:Nexa-Regular;
+  background-color: white;
 }
 .active{
   cursor: progress;

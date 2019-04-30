@@ -1,6 +1,6 @@
 <template lang="html">
   <section id="artistas">
-    <div class="sk-cube-grid">
+    <div class="sk-cube-grid" style="display: none" v-bind:class="{activo: isLoading }">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
       <div class="sk-cube sk-cube3"></div>
@@ -11,131 +11,133 @@
       <div class="sk-cube sk-cube8"></div>
       <div class="sk-cube sk-cube9"></div>
     </div>
-    <div class="infoContainer">
-      <div class="row">
-        <div class="col-md-9 col-sm-12">
-          <h1 class="artistName">{{artista}}</h1>
-        </div>
-        <div class="col-md-3 col-sm-12">
-          <div class="circle text-center">
-            <span class="artistInfo">NIVEL</span><br>
-            <span class="artistInfo">{{nivel}}</span>
-          </div>
-          <span class="artistInfo text-center">{{tipoPlan}}</span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-12">
-          <img class="rounded-circle img-fluid" v-bind:src='image' alt="">
-        </div>
-        <div class="col-md-8 col-sm-12">
-          <h4 class="artistInfo text-left"> {{artista}}</h4>
-          <h4 class="artistInfo text-left"> {{city}}</h4>
-          <h4 class="artistInfo text-left"> {{paises}}</h4>
-        </div>
-      </div>
-    </div>
-    <div class="moreInfocontainer">
-      <div class="row text-center">
-        <span class="description">{{descripcion}}</span>
-      </div>
-      <div class="row imgContainerExtra">
-        <img class="extraImg" src="../assets/images/PIM_international_purple.png" alt="">
+    <div style="display: none" v-bind:class="{activo: !isLoading }">
+      <div class="infoContainer">
         <div class="row">
-          <h5 >Artista con <br> PROYECCIÓN <br> INTERNACIONAL</h5>
+          <div class="col-md-9 col-sm-12">
+            <h1 class="artistName">{{artista}}</h1>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="circle text-center">
+              <span class="artistInfo">NIVEL</span><br>
+              <span class="artistInfo">{{nivel}}</span>
+            </div>
+            <span class="artistInfo text-center">{{tipoPlan}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <img class="rounded-circle img-fluid" v-bind:src='image' alt="">
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <h4 class="artistInfo text-left"> {{artista}}</h4>
+            <h4 class="artistInfo text-left"> {{city}}</h4>
+            <h4 class="artistInfo text-left"> {{paises}}</h4>
+          </div>
         </div>
       </div>
-      <div class="row text-center attributesContainer">
-        <div class="imgContainer">
-          <img class="attributesImg" src="../assets/images/PIM_opportunity_purple.png" alt=""><br>
-          <span>Oportunidades</span>
+      <div class="moreInfocontainer">
+        <div class="row text-center">
+          <span class="description">{{descripcion}}</span>
         </div>
-        <div class="imgContainer">
-          <img class="attributesImg" src="../assets/images/PIM_coins_purple.png" alt=""><br>
-          <span>Pago Pendiente</span>
+        <div class="row imgContainerExtra">
+          <img class="extraImg" src="../assets/images/PIM_international_purple.png" alt="">
+          <div class="row">
+            <h5 >Artista con <br> PROYECCIÓN <br> INTERNACIONAL</h5>
+          </div>
         </div>
-        <div class="imgContainer">
-          <img class="attributesImg" src="../assets/images/PIM_recommend_purple.png" alt=""><br>
-          <span>Recomendaciones</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-3 mediaPlayer">
-      <span class="mediaTitle">MEDIA <i class="fas fa-play"></i></span>
-      <audio controls>
-        <source src="../assets/song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <audio controls>
-        <source src="../assets/song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <audio controls>
-        <source src="../assets/song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-    <div class="cotizacionWrapper">
-      <!-- <div class="col-3 mediaPlayer">
-        <img class="" src="../assets/images/media2.png" alt=""><br>
-      </div> -->
-      <div class="col-9 cotizacionContainer">
-        <h3 class="row">Cotización y trayectoria artística</h3>
         <div class="row text-center attributesContainer">
           <div class="imgContainer">
-            <img class="cotizacionImg" src="../assets/images/PIM_spotlights_orange.png" alt=""><br>
-            <span class="cotizacionNum">{{numConciertos}} </span> <br>
-            <span class="cotizacionText"> CONCIERTOS</span>
+            <img class="attributesImg" src="../assets/images/PIM_opportunity_purple.png" alt=""><br>
+            <span>Oportunidades</span>
           </div>
           <div class="imgContainer">
-            <img class="cotizacionImg" src="../assets/images/PIM_level_orange.png" alt=""><br>
-            <span class="cotizacionNum">{{numCiudades}}</span> <br>
-            <span class="cotizacionText"> CIUDADES</span>
+            <img class="attributesImg" src="../assets/images/PIM_coins_purple.png" alt=""><br>
+            <span>Pago Pendiente</span>
           </div>
           <div class="imgContainer">
-            <img class="cotizacionImg" src="../assets/images/PIM_money_orange.png" alt=""><br>
-            <span class="cotizacionNum">${{numPresentaciones}}K </span> <br>
-            <span class="cotizacionText"> PRESENTACIÓNES INTERNACIONALES</span>
+            <img class="attributesImg" src="../assets/images/PIM_recommend_purple.png" alt=""><br>
+            <span>Recomendaciones</span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="statsContainer">
-      <div class="row socialContainer">
-        <div class="col-6 socialMedia">
-          <div class="row">
-            <div class="socialIcons">
-              <i class="fab fa-facebook-f"></i> <span> +{{likes}} likes</span> <br>
-              <i class="fab fa-twitter"></i> <span> {{comentarios}}% + comentarios</span><br>
-              <i class="fab fa-instagram"></i><span> {{seguidores}}% + seguidores</span> <br>
+      <div class="col-3 mediaPlayer">
+        <span class="mediaTitle">MEDIA <i class="fas fa-play"></i></span>
+        <audio controls>
+          <source src="../assets/song.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio controls>
+          <source src="../assets/song.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio controls>
+          <source src="../assets/song.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div class="cotizacionWrapper">
+        <!-- <div class="col-3 mediaPlayer">
+          <img class="" src="../assets/images/media2.png" alt=""><br>
+        </div> -->
+        <div class="col-9 cotizacionContainer">
+          <h3 class="row">Cotización y trayectoria artística</h3>
+          <div class="row text-center attributesContainer">
+            <div class="imgContainer">
+              <img class="cotizacionImg" src="../assets/images/PIM_spotlights_orange.png" alt=""><br>
+              <span class="cotizacionNum">{{numConciertos}} </span> <br>
+              <span class="cotizacionText"> CONCIERTOS</span>
+            </div>
+            <div class="imgContainer">
+              <img class="cotizacionImg" src="../assets/images/PIM_level_orange.png" alt=""><br>
+              <span class="cotizacionNum">{{numCiudades}}</span> <br>
+              <span class="cotizacionText"> CIUDADES</span>
+            </div>
+            <div class="imgContainer">
+              <img class="cotizacionImg" src="../assets/images/PIM_money_orange.png" alt=""><br>
+              <span class="cotizacionNum">${{numPresentaciones}}K </span> <br>
+              <span class="cotizacionText"> PRESENTACIÓNES INTERNACIONALES</span>
             </div>
           </div>
         </div>
-        <div class="col-6 planPremium">
-          <span class="cotizacionText">PLAN PREMIUM</span> <br>
-          <span class="cotizacionNum">{{porcentajeNivel}}%</span>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 57%"></div>
+      </div>
+      <div class="statsContainer">
+        <div class="row socialContainer">
+          <div class="col-6 socialMedia">
+            <div class="row">
+              <div class="socialIcons">
+                <i class="fab fa-facebook-f"></i> <span> +{{likes}} likes</span> <br>
+                <i class="fab fa-twitter"></i> <span> {{comentarios}}% + comentarios</span><br>
+                <i class="fab fa-instagram"></i><span> {{seguidores}}% + seguidores</span> <br>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 planPremium">
+            <span class="cotizacionText">PLAN PREMIUM</span> <br>
+            <span class="cotizacionNum">{{porcentajeNivel}}%</span>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 57%"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row nextStepsContainer">
-      <div class="col-7">
-        <span class="cotizacionText">Hola, {{artista}}!</span><br>
-        <span class="cotizacionText">{{review}}</span><br>
-        <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
-      </div>
-      <div class="col-5 text-center">
-        <button class="nextStepOption">
-          {{step1}}
-        </button>
-        <button class="nextStepOption">
-          {{step2}}
-        </button>
-        <button class="nextStepOption">
-          {{step3}}
-        </button>
+      <div class="row nextStepsContainer">
+        <div class="col-7">
+          <span class="cotizacionText">Hola, {{artista}}!</span><br>
+          <span class="cotizacionText">{{review}}</span><br>
+          <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
+        </div>
+        <div class="col-5 text-center">
+          <button class="nextStepOption">
+            {{step1}}
+          </button>
+          <button class="nextStepOption">
+            {{step2}}
+          </button>
+          <button class="nextStepOption">
+            {{step3}}
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -153,7 +155,7 @@
     name: 'artistas',
     data(){
       return{
-        loading: true,
+        isLoading: true,
         artista: '',
         nivel: 6,
         tipoPlan: 'PLAN PREMIUM',
@@ -199,6 +201,7 @@
           }
         }).then((respuesta) => {
           console.log("Artist", respuesta);
+          this.isLoading = !this.isLoading;
           this.city = respuesta.data.city;
           this.artista = respuesta.data.bandName;
           this.image = respuesta.data.photo;
@@ -239,82 +242,8 @@
     font-family:Nexa-Regular;
     src:url("../assets/fonts/NexaRegular.otf");
   }
-  .sk-cube-grid {
-    width: 200px;
-    height: 200px;
-    margin: 100px auto;
-  }
-
-  .sk-cube-grid .sk-cube {
-    width: 33%;
-    height: 33%;
-    background-color: #333;
-    float: left;
-    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  }
-  .sk-cube-grid .sk-cube1 {
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s; }
-  .sk-cube-grid .sk-cube2 {
-    -webkit-animation-delay: 0.3s;
-    animation-delay: 0.3s; }
-  .sk-cube-grid .sk-cube3 {
-    -webkit-animation-delay: 0.4s;
-    animation-delay: 0.4s; }
-  .sk-cube-grid .sk-cube4 {
-    -webkit-animation-delay: 0.1s;
-    animation-delay: 0.1s; }
-  .sk-cube-grid .sk-cube5 {
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s; }
-  .sk-cube-grid .sk-cube6 {
-    -webkit-animation-delay: 0.3s;
-    animation-delay: 0.3s; }
-  .sk-cube-grid .sk-cube7 {
-    -webkit-animation-delay: 0s;
-    animation-delay: 0s; }
-  .sk-cube-grid .sk-cube8 {
-    -webkit-animation-delay: 0.1s;
-    animation-delay: 0.1s; }
-  .sk-cube-grid .sk-cube9 {
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s; }
-
-  @-webkit-keyframes sk-cubeGridScaleDelay {
-    0%, 70%, 100% {
-      -webkit-transform: scale3D(1, 1, 1);
-      transform: scale3D(1, 1, 1);
-    } 35% {
-        -webkit-transform: scale3D(0, 0, 1);
-        transform: scale3D(0, 0, 1);
-      }
-  }
-
-  @keyframes sk-cubeGridScaleDelay {
-    0%, 70%, 100% {
-      -webkit-transform: scale3D(1, 1, 1);
-      transform: scale3D(1, 1, 1);
-    } 35% {
-        -webkit-transform: scale3D(0, 0, 1);
-        transform: scale3D(0, 0, 1);
-      }
-  }
-  @keyframes lds-ripple {
-    0% {
-      top: 28px;
-      left: 28px;
-      width: 0;
-      height: 0;
-      opacity: 1;
-    }
-    100% {
-      top: -1px;
-      left: -1px;
-      width: 58px;
-      height: 58px;
-      opacity: 0;
-    }
+  .activo{
+    display: inherit!important;
   }
   #artistas{
     font-family:Nexa-Regular;

@@ -51,10 +51,10 @@
           oauth.login(this.input.email, this.input.password, true).then((respuesta) => {
             if(respuesta.code && respuesta.code === 200){
               this.$emit("authenticated", true);
-              this.$router.push({path: "artistas"});
+              this.$router.push({path: "admin"});
               this.isLoading = !this.isLoading;
             }else {
-              this.$router.push({path: "artistas"});
+              this.$router.push({path: "admin"});
               this.$notify({
                 group: 'foo',
                 type: 'error',
@@ -92,6 +92,7 @@
 }
 #loginAdmin{
   font-family:Nexa-Regular;
+  background-color: white;
 }
 .active{
   cursor: progress;
