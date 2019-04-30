@@ -372,7 +372,19 @@
       async register() {
         let bool = 0;
         Object.entries(this.input).forEach(([key, value]) => {
-          bool = (!value || value === "") ? bool + 1 : bool;
+          if((key === "cuantos" || key === "paises")){
+            if(this.input["internacional"] === 'si')
+              bool = (!value || value === "") ? bool + 1 : bool;
+          }else{
+            bool = (!value || value === "") ? bool + 1 : bool;
+          }
+
+          if((key === "streamingCual")){
+            if(this.input["streaming"] === 'si')
+              bool = (!value || value === "") ? bool + 1 : bool;
+          }else{
+            bool = (!value || value === "") ? bool + 1 : bool;
+          }
         });
 
         let val = {
@@ -404,7 +416,7 @@
 
         if (bool === 0 && this.shandraw.length != 0) {
           apiService.post({
-            url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist`,
+            url: `${this.$store.state.server}/api/v1/artist`,
             headers: {
               "Content-Type": "application/json",
               'Authorization': `Bearer ${await oauth.getToken().then((obj) => obj.access_token)}`
@@ -415,7 +427,21 @@
             if(respuesta && respuesta.message === "¡Genial! Se agregaron exitosamente los datos")
               this.$router.replace({ name: "artistas" });
             else
-              alert("No pude salvar el registro intenta de nuevo de favor")
+              this.$notify({
+                group: 'foo',
+                type: 'error',
+                duration: 10000,
+                title: "¡Alto!",
+                text: respuesta.message.response.data.message
+              });
+          });
+        }else{
+          this.$notify({
+            group: 'foo',
+            type: 'warn',
+            duration: 10000,
+            title: "¡Alto!",
+            text: "¡Tienes que llenar todos los campos!"
           });
         }
       },

@@ -19,24 +19,38 @@ export class OAuth2 {
                 "https://proindiemusic-backend.mybluemix.net"
             ],
             "status": "true",
-            "oauth2": "https://proindiemusic-oauth.mybluemix.net/"
+            "oauth2": "http://localhost:9000/"
         };
     }
 
     async onSetRequest(body) {
-        await fetch(`${this.clientAuth.oauth2}/oauth2/token`, {
+        return await fetch(`${this.clientAuth.oauth2}oauth2/token`, {
             method: "POST",
             body: body,
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-        })
-            .then(res => {
-                status = res.status;
-                return res.json();
-            })
-            .then(res => [status, res])
-            .catch(error => error);
+        }).then(function(response) {
+            return response.json();
+        }).then(function(myJson) {
+            return myJson
+        }).catch(error => error);
+    }
+
+    async onCheckRequest(token) {
+        let status=400;
+        return await fetch(`${this.clientAuth.oauth2}oauth2/user`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then(function(response) {
+            status = response.status;
+            return response.json();
+        }).then(function(myJson) {
+            return [status, myJson]
+        }).catch(error => error);
     }
 
     async login(email, password, admin=false){
@@ -51,17 +65,18 @@ export class OAuth2 {
             password: password
         };
 
-        let searchParams = Object.keys(body).map((key) => {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-        }).join('&');
-
-        return parent.apiService.post({
-            url: `https://proindiemusic-oauth.mybluemix.net/oauth2/auth`,
-            params: searchParams,
+        return await parent.apiService.post({
+            url: `${this.clientAuth.oauth2}oauth2/auth`,
+            params: body,
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
             }
         }).then((respuesta) => {
+
+            if(respuesta.code === 400) {
+                return respuesta;
+            }
+
             body = {
                 code: respuesta.payload.code,
                 grant_type: "authorization_code",
@@ -74,16 +89,12 @@ export class OAuth2 {
                 body["scope"] = "ADMIN"
             }
 
-            searchParams = Object.keys(body).map((key) => {
-                return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-            }).join('&');
-
             let time = moment();
             return parent.apiService.post({
-                url: `https://proindiemusic-oauth.mybluemix.net/oauth2/token`,
-                params: searchParams,
+                url: `${this.clientAuth.oauth2}oauth2/token`,
+                params: body,
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Type": "application/json",
                 }
             }).then((res) => {
                 console.log("Login", res);
@@ -94,32 +105,16 @@ export class OAuth2 {
                 parent.onCheckRequest(res.access_token).then(function (valid){
                     console.log("User", valid);
                     localStorage.setItem("profile", JSON.stringify(valid[1]));
+                }).catch((err) => {
+                    console.log("Error en user", err)
                 });
                 return respuesta;
-            });
-        });
-    }
-
-    async onCheckRequest(token) {
-        let status;
-
-        return await fetch(`${this.clientAuth.oauth2}oauth2/user`, {
-            method: "GET",
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
+            }).catch((err) => {
+                console.log(err)
+            })
+        }).catch((err) => {
+            console.log(err)
         })
-            .then(res => {
-                status = res.status;
-                return res.json();
-            })
-            .then(res => {
-                return [status, res]
-            })
-            .catch(error => {
-                console.log("Hubo un error", error);
-                return error;
-            });
     }
 
     async getToken() {
@@ -157,15 +152,9 @@ export class OAuth2 {
                                 client_secret: parent.clientAuth.clientSecret
                             };
 
-                            const searchParams = Object.keys(body).map((key) => {
-                                return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
-                            }).join('&');
-
-                            return parent.onSetRequest(searchParams).then(function (valid) {
-
+                            return parent.onSetRequest(body).then(function (valid) {
                                 if (valid[0] === 200) {
                                     localStorage.setItem("access_token", valid[1]["access_token"]);
-
                                     return resolve({
                                         access_token: valid[1]["access_token"],
                                         profile: JSON.parse(profile)
@@ -177,7 +166,8 @@ export class OAuth2 {
                                         profile: null
                                     });
                                 }
-                            }).catch(() => {
+                            }).catch((err) => {
+                                console.log("OAuth:170", err);
                                 parent.clearToken();
                                 return resolve({
                                     access_token: null,
@@ -185,7 +175,8 @@ export class OAuth2 {
                                 });
                             });
                         }
-                    }).catch(() => {
+                    }).catch((err) => {
+                        console.log("OAuth:179", err);
                         parent.clearToken();
                         return resolve({
                             access_token: null,
@@ -201,7 +192,7 @@ export class OAuth2 {
                 }
 
             } catch (err) {
-                console.log(err);
+                console.log("OAuth:195", err);
                 parent.clearToken();
                 return resolve({
                     access_token: null,

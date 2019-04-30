@@ -1,5 +1,5 @@
 <template lang="html">
-  <section id="loginAdmin">
+  <section id="loginAdmin" v-bind:class="{active: isLoading }">
     <div class="imageLogin">
       <h1>Login Administrador</h1>
     </div>
@@ -37,6 +37,7 @@
   export default {
     data() {
       return {
+        isLoading: false,
         input: {
           email: "",
           password: ""
@@ -46,11 +47,26 @@
     methods: {
       login() {
         if(this.input.email !== "" && this.input.password !== "") {
+          this.isLoading = !this.isLoading;
           oauth.login(this.input.email, this.input.password, true).then((respuesta) => {
-            this.$emit("authenticated", true);
-            this.$router.replace({ name: "artistas" });
+            if(respuesta.code && respuesta.code === 200){
+              this.$emit("authenticated", true);
+              this.$router.push({path: "artistas"});
+              this.isLoading = !this.isLoading;
+            }else {
+              this.$router.push({path: "artistas"});
+              this.$notify({
+                group: 'foo',
+                type: 'error',
+                duration: 5000,
+                title: "¡Alto!",
+                text: (respuesta.message == null ? 'Hubo un error desconocido':respuesta.message)
+              });
+            }
+          }).catch((err) => {
+            console.log("Error", err);
+            this.isLoading = !this.isLoading;
           });
-
         } else {
           console.log("A email and password must be present");
         }
@@ -76,6 +92,9 @@
 }
 #loginAdmin{
   font-family:Nexa-Regular;
+}
+.active{
+  cursor: progress;
 }
 .imageLogin{
   height: 500px;

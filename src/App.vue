@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <notifications group="foo"></notifications>
         <PIMHeader :authenticated="authenticated"/>
         <!-- <div id="content">
           <router-view></router-view>
@@ -12,6 +13,8 @@
     import PIMHeader from './components/PIMHeader.vue'
     import PIMFooter from './components/PIMFooter.vue'
     import * as OAuth from './OAuth2';
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
 
     let oauth = new OAuth.OAuth2();
 
@@ -27,11 +30,6 @@
             });
             return{
                 authenticated: false
-            }
-        },
-        mounted() {
-            if(!this.authenticated) {
-                this.$router.replace({ name: "home" });
             }
         },
         methods: {

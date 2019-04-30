@@ -49,7 +49,7 @@
           <span class="textOrange">Contraseña</span>
         </div>
         <div class="col-6">
-          <vue-password name="password" v-model="input.password" classes="input":user-inputs="[input.email]"></vue-password>
+          <vue-password name="password" v-model="input.password" classes="input" :user-inputs="[input.email]"></vue-password>
 
           <!-- <input type="password" name="password" v-model="input.password" value="" placeholder="   **********"><br> -->
         </div>
@@ -132,10 +132,10 @@
           }).join('&');
 
           let datos = apiService.post({
-            url: `https://proindiemusic-oauth.mybluemix.net/oauth2/user`,
+            url: `${this.$store.state.oauth2}/oauth2/user`,
             params: searchParams,
             headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
+              "Content-Type": "application/json"
             }
           }).then((respuesta) => {
             console.log("Register User", respuesta);

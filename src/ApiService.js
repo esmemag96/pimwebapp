@@ -13,28 +13,30 @@ export class ApiService {
             method: 'get',
             url: options.url,
             params: options.params,
-            headers: Object.assign({}, this.axiosClient.headers, options.headers)
+            headers: options.headers
         }).then((response) => {
             return response.data;
         }).catch((err) => {
             console.log("Error", options, err);
-            return (this.normalizeError(err));
+            return err.message.response.data
         });
     }
+
     // I perform a PUT request with the given options.
     async put(options) {
         return await this.axiosClient.request({
             method: 'put',
             url: options.url,
             data: options.params,
-            headers: Object.assign({}, this.axiosClient.headers, options.headers)
+            headers: options.headers
         }).then((response) => {
             return response.data;
         }).catch((err) => {
             console.log("Error", options, err);
-            return (this.normalizeError(err));
+            return err.message.response.data
         });
     }
+
     // I perform a POST request with the given options.
     async post(options) {
         return await this.axiosClient.request({
@@ -46,18 +48,23 @@ export class ApiService {
             return response.data;
         }).catch((err) => {
             console.log("Error", options, err);
-            return (this.normalizeError(err));
+            return err.response.data;
         });
     }
 
-    normalizeError(error) {
-        // NOTE: Since I'm not really dealing with a production API, this doesn't really
-        // normalize anything (ie, this is not the focus of this demo).
-        return ({
-            id: '-1',
-            code: 'UnknownError',
-            message: error
+
+    // I perform a POST request with the given options.
+    async delete(options) {
+        return await this.axiosClient.request({
+            method: 'delete',
+            url: options.url,
+            data: options.params,
+            headers: options.headers
+        }).then((response) => {
+            return response.data;
+        }).catch((err) => {
+            console.log("Error", options, err);
+            return err.response.data;
         });
     }
-
 }

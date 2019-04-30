@@ -19,22 +19,28 @@
           <div class="agencia py-1" id="agencia2">
             <div class="container">
               <div style=" align-items: center;justify-content: center" class="">
-                <p id="margin-top-p"style=""class="wow fadeIn agenciaText">Forma parte de nuestra comunidad<br>completamente <span style="color: #ee4540">GRATIS!</span></p>
+                <p id="margin-top-p" class="wow fadeIn agenciaText">Forma parte de nuestra comunidad<br>completamente <span style="color: #ee4540">GRATIS!</span></p>
               </div>
               <div style="display: flex; align-items: center;justify-content: center" class="">
                 <p class="wow fadeIn agenciaText">Contamos con el apoyo de <span style="color: #ee4540">más de 500 festivales,</span><br>venues mercados y organizaciones en la industria musical</p>
               </div>
               <div style="margin-bottom: 40px;" class="carrouselContainer">
-                <carousel :autoplay="false" :nav="false" :dots="false":number=4 :responsive="{0:{items:1,nav:false}}">
-                  <img class="img-carousel" src="../assets/images/festivals_camden.png">
-                  <img class="img-carousel" src="../assets/images/festivals_cordoba.png">
-                  <img class="img-carousel" src="../assets/images/festivals_dells.png">
-                  <img class="img-carousel" src="../assets/images/festivals_fringe.png">
-                  <img class="img-carousel" src="../assets/images/festivals_mty.png">
-                  <img class="img-carousel" src="../assets/images/festivals_ruido.png">
-                  <img class="img-carousel" src="../assets/images/festivals_sanmarcos.png">
-                  <img class="img-carousel" src="../assets/images/festivals_sxsw.png">
-                </carousel>
+                <swiper :options="swiperOption" ref="mySwiper">
+                  <!-- slides -->
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_camden.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_cordoba.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_dells.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_fringe.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_mty.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_ruido.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_sanmarcos.png"></swiper-slide>
+                  <swiper-slide><img class="img-carousel" src="../assets/images/festivals_sxsw.png"></swiper-slide>
+                  <!-- Optional controls -->
+                  <div class="swiper-pagination"  slot="pagination"></div>
+                  <div class="swiper-button-prev" slot="button-prev"></div>
+                  <div class="swiper-button-next" slot="button-next"></div>
+                  <div class="swiper-scrollbar"   slot="scrollbar"></div>
+                </swiper>
               </div>
               <div class="col-md-16  wow fadeIn" data-wow-delay=".6s">
                 <ul class="listaH">
@@ -55,13 +61,13 @@
           <div class="trabaja py-1" id="trabajaId">
             <div class="container">
               <div style="display: flex; align-items: center;justify-content: center" class="">
-                <p style="width: auto;text-align: center;font-size: 28.5px; font-family: Nexa-Heavy;"class=" wow fadeIn">TRABAJA. CRECE. APRENDE.</p>
+                <p style="width: auto;text-align: center;font-size: 28.5px; font-family: Nexa-Heavy;" class=" wow fadeIn">TRABAJA. CRECE. APRENDE.</p>
               </div>
               <div style="display: flex; align-items: center;justify-content: center" class="">
-                <p style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Regular;"class=" wow fadeIn">Pro Indie Music busca conectar la industria musical en un solo espacio, <br>democratizando las oportunidades en la industria musical.</p>
+                <p style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Regular;" class=" wow fadeIn">Pro Indie Music busca conectar la industria musical en un solo espacio, <br>democratizando las oportunidades en la industria musical.</p>
               </div>
               <div style="display: flex; align-items: center;justify-content: center" class="">
-                <p id="margen-top-p" style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Heavy;margin-top: 120px;"class=" wow fadeIn">Desarrolla tu carrera</p>
+                <p id="margen-top-p" style="width: auto;text-align: center;font-size: 28.5px;font-family: Nexa-Heavy;margin-top: 120px;" class=" wow fadeIn">Desarrolla tu carrera</p>
               </div>
               <div class="flecha-bajar text-center">
                 <a data-scroll href="#misionId"> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -92,10 +98,31 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
-
 export default {
   name: 'app',
+  data() {
+    return {
+      swiperOption: {
+        // Optional parameters
+        loop: true,
+        slidesPerView: 5,
+        centeredSlides: 'true',
+        loopAdditionalSlides: 3,
+        freeMode: true,
+        freeModeMomentum: true,
+        grabCursor: true,
+        autoplay: {
+          delay: 1200,
+        }
+      }
+    }
+  },
   components: { carousel },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.swiper
+    }
+  }
 }
 </script>
 

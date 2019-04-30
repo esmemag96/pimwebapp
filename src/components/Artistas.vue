@@ -1,5 +1,16 @@
 <template lang="html">
   <section id="artistas">
+    <div class="sk-cube-grid">
+      <div class="sk-cube sk-cube1"></div>
+      <div class="sk-cube sk-cube2"></div>
+      <div class="sk-cube sk-cube3"></div>
+      <div class="sk-cube sk-cube4"></div>
+      <div class="sk-cube sk-cube5"></div>
+      <div class="sk-cube sk-cube6"></div>
+      <div class="sk-cube sk-cube7"></div>
+      <div class="sk-cube sk-cube8"></div>
+      <div class="sk-cube sk-cube9"></div>
+    </div>
     <div class="infoContainer">
       <div class="row">
         <div class="col-md-9 col-sm-12">
@@ -112,18 +123,18 @@
     <div class="row nextStepsContainer">
       <div class="col-7">
         <span class="cotizacionText">Hola, {{artista}}!</span><br>
-        <span class="cotizacionText">Veo que hubo buena reacción en el evento de CDMX...</span><br>
+        <span class="cotizacionText">{{review}}</span><br>
         <span class="cotizacionText">Ahora, <br> ¿Qué te gustaría hacer?</span><br>
       </div>
       <div class="col-5 text-center">
         <button class="nextStepOption">
-          Programar concierto
+          {{step1}}
         </button>
         <button class="nextStepOption">
-          Publicación de agradecimiento
+          {{step2}}
         </button>
         <button class="nextStepOption">
-          Crear campaña publicitaria
+          {{step3}}
         </button>
       </div>
     </div>
@@ -142,6 +153,7 @@
     name: 'artistas',
     data(){
       return{
+        loading: true,
         artista: '',
         nivel: 6,
         tipoPlan: 'PLAN PREMIUM',
@@ -156,22 +168,17 @@
         paises: 0,
         image: '',
         photoBack: '',
-        city: ''
-
+        city: '',
+        step1: '',
+        step2: '',
+        step3: '',
+        review: ''
       }
     },
     beforeRouteEnter(to, from, next) {
       oauth.getToken().then((obj) =>{
         if(obj.access_token){
-          return apiService.get({
-            url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist/user`,
-            headers: {
-              "Content-Type": "application/json",
-              'Authorization': `Bearer ${obj.access_token}`
-            }
-          }).then((respuesta) => {
-            next(vm => {vm.setData(respuesta)})
-          });
+          next(vm => {vm.setData(obj)})
         }else{
           this.$parent.authenticated = false;
           localStorage.removeItem('access_token');
@@ -182,35 +189,36 @@
         }
       });
     },
-    beforeRouteUpdate (to, from, next) {
-      console.log("called");
-      oauth.getToken().then((obj) =>{
+    methods: {
+      setData(obj) {
         return apiService.get({
-          url: `https://proindiemusic-backend.mybluemix.net/api/v1/artist/user`,
+          url: `${this.$store.state.server}/api/v1/artist/user`,
           headers: {
             "Content-Type": "application/json",
             'Authorization': `Bearer ${obj.access_token}`
           }
         }).then((respuesta) => {
-          this.setData(respuesta);
-          next();
-        });
-      });
-    },
-    methods: {
-      setData(respuesta) {
-        console.log("Artist", respuesta);
-        this.city = respuesta.data.city;
-        this.artista = respuesta.data.bandName;
-        this.image = respuesta.data.photo;
-        this.descripcion = respuesta.data.description;
-        this.numConciertos = respuesta.data.concertsPerYear;
-        this.numCiudades = respuesta.data.places.split(",").length;
-        this.numPresentaciones = respuesta.data.internationalConcerts;
-        this.likes = respuesta.data.facebookFollowers;
-        this.seguidores = respuesta.data.youtubeMustViewVideo;
-        this.paises = respuesta.data.places;
-        this.photoBack = respuesta.data.photoBack;
+          console.log("Artist", respuesta);
+          this.city = respuesta.data.city;
+          this.artista = respuesta.data.bandName;
+          this.image = respuesta.data.photo;
+          this.descripcion = respuesta.data.description;
+          this.numConciertos = respuesta.data.concertsPerYear;
+          if(respuesta.data.places) {
+            this.numCiudades = respuesta.data.places.split(",").length;
+          }
+          this.numPresentaciones = respuesta.data.internationalConcerts;
+          this.likes = respuesta.data.facebookFollowers;
+          this.seguidores = respuesta.data.youtubeMustViewVideo;
+          this.paises = respuesta.data.places;
+          this.photoBack = respuesta.data.photoBack;
+          this.step1 = respuesta.data.step1;
+          this.step2 = respuesta.data.step2;
+          this.step3 = respuesta.data.step3;
+          this.review = respuesta.data.review;
+        }).catch((err) => {
+          console.log("Salio un error", err)
+        })
       }
     }
   }
@@ -230,6 +238,83 @@
   {
     font-family:Nexa-Regular;
     src:url("../assets/fonts/NexaRegular.otf");
+  }
+  .sk-cube-grid {
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+  }
+
+  .sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #333;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  }
+  .sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s; }
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; }
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+
+  @-webkit-keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+      transform: scale3D(1, 1, 1);
+    } 35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
+      }
+  }
+
+  @keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+      transform: scale3D(1, 1, 1);
+    } 35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
+      }
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
   }
   #artistas{
     font-family:Nexa-Regular;
